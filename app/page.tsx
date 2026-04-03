@@ -18,7 +18,7 @@ export default function Home() {
         <ScrollToTopCube />
         
         {/* Main Content Stack - Ensures natural scroll flow and height calculation */}
-        <div className="relative w-full overflow-hidden">
+        <div className="relative w-full overflow-x-hidden">
           <Hero />
           <TrustStrip />
           <Philosophy />
