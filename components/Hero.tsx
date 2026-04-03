@@ -33,7 +33,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative h-[90dvh] w-full overflow-x-hidden bg-black text-white"
+      className="relative h-screen w-full overflow-hidden bg-black text-white"
       onMouseMove={handleMouseMove}
     >
       {/* Background with reduced opacity for text readability */}

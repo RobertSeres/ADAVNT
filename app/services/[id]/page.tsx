@@ -214,7 +214,7 @@ export default function ServicePage() {
       <Navbar />
 
       {/* 1. HERO - MASSIVE & MINIMAL */}
-      <section className="relative h-[90dvh] flex flex-col items-center justify-center overflow-x-hidden">
+      <section className="relative h-[90dvh] flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Grainient
             color1={data.colors[0]}
@@ -335,7 +335,7 @@ export default function ServicePage() {
       </section>
 
       {/* 5. DENSE DETAILS (5x content) */}
-      <section className="py-32 md:py-64 bg-zinc-950/40 relative overflow-x-hidden">
+      <section className="py-32 md:py-64 bg-zinc-950/40 relative overflow-hidden">
         <div className="container mx-auto px-6 overflow-hidden">
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
               {data.details.map((detail, i) => (
