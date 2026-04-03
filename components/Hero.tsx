@@ -5,6 +5,17 @@ import ColorBends from './ColorBends/ColorBends';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const Hero = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 1024px)").matches);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -27,19 +38,23 @@ const Hero = () => {
     >
       {/* Background with reduced opacity for text readability */}
       <div className="absolute inset-0 z-0">
-        <ColorBends
-          colors={["#FFD700", "#FF00FF", "#FFFFFF"]}
-          rotation={0}
-          speed={0.2}
-          scale={1}
-          frequency={1}
-          warpStrength={1}
-          mouseInfluence={0.45}
-          parallax={0}
-          noise={0.1}
-          transparent
-          autoRotate={0}
-        />
+        {!isMobile ? (
+          <ColorBends
+            colors={["#FFD700", "#FF00FF", "#FFFFFF"]}
+            rotation={0}
+            speed={0.2}
+            scale={1}
+            frequency={1}
+            warpStrength={1}
+            mouseInfluence={0.45}
+            parallax={0}
+            noise={0.1}
+            transparent
+            autoRotate={0}
+          />
+        ) : (
+          <div className="absolute inset-0 bg-linear-to-br from-zinc-900 to-black opacity-80" />
+        )}
         {/* Subtle overlay for contrast */}
         <div className="absolute inset-0 bg-black/20 pointer-events-none" />
       </div>

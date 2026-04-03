@@ -152,9 +152,19 @@ const Grainient: React.FC<GrainientProps> = ({
   className = ''
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 1024px)").matches);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (isMobile || !containerRef.current) return;
 
     const renderer = new Renderer({
       webgl: 2,
@@ -244,7 +254,16 @@ const Grainient: React.FC<GrainientProps> = ({
     centerX, centerY, zoom, color1, color2, color3
   ]);
 
-  return <div ref={containerRef} className={`relative h-full w-full overflow-hidden ${className}`.trim()} />;
+  return (
+    <div 
+      ref={containerRef} 
+      className={`relative h-full w-full overflow-hidden ${className}`.trim()}
+      style={isMobile ? { 
+        background: `linear-gradient(135deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`,
+        opacity: 0.9 
+      } : {}}
+    />
+  );
 };
 
 export default Grainient;
