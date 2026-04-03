@@ -7,12 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
-    // Only initialize Lenis on desktop (min-width: 1024px)
-    // On mobile, we use native hardware-accelerated scrolling for maximum performance.
-    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    
-    if (!isDesktop) return;
-
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
@@ -36,7 +30,7 @@ const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
 
     // Handle anchor links manually for a smoother experience
     const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.currentTarget as HTMLAnchorElement;
+      const target = e.target as HTMLAnchorElement;
       const href = target.getAttribute("href");
       
       if (href?.startsWith("#")) {

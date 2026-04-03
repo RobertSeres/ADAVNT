@@ -5,17 +5,6 @@ import ColorBends from './ColorBends/ColorBends';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const Hero = () => {
-  const [isMobile, setIsMobile] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.matchMedia("(max-width: 1024px)").matches);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -38,34 +27,19 @@ const Hero = () => {
     >
       {/* Background with reduced opacity for text readability */}
       <div className="absolute inset-0 z-0">
-        {!isMobile ? (
-          <ColorBends
-            colors={["#00f2ff", "#bc13fe", "#39ff14"]}
-            rotation={45}
-            speed={0.1}
-            scale={1}
-            frequency={1}
-            warpStrength={1}
-            mouseInfluence={0.4}
-            parallax={0.2}
-            noise={0.1}
-            transparent
-            autoRotate={0.1}
-          />
-        ) : (
-          <div 
-            className="absolute inset-0" 
-            style={{ 
-              background: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"), 
-                           radial-gradient(at 0% 0%, #00f2ff 0%, transparent 60%), 
-                           radial-gradient(at 100% 0%, #bc13fe 0%, transparent 60%), 
-                           radial-gradient(at 50% 50%, #39ff14 0%, transparent 80%),
-                           #000000`,
-              backgroundBlendMode: 'overlay',
-              opacity: 0.15 
-            }} 
-          />
-        )}
+        <ColorBends
+          colors={["#FFD700", "#FF00FF", "#FFFFFF"]}
+          rotation={0}
+          speed={0.2}
+          scale={1}
+          frequency={1}
+          warpStrength={1}
+          mouseInfluence={0.45}
+          parallax={0}
+          noise={0.1}
+          transparent
+          autoRotate={0}
+        />
         {/* Subtle overlay for contrast */}
         <div className="absolute inset-0 bg-black/20 pointer-events-none" />
       </div>

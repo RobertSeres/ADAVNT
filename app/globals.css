@@ -89,16 +89,3 @@ body {
     transform: rotateX(15deg) rotateY(360deg);
   }
 }
-
-/* Mobile Performance Optimizations */
-@media (max-width: 1024px) {
-  section {
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-  
-  * {
-    -webkit-overflow-scrolling: touch;
-  }
-}
