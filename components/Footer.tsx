@@ -73,12 +73,18 @@ const Footer = () => {
 
       {/* 3. LAYER: LEGAL BAR */}
       <div className="container mx-auto px-6 border-t border-white/5 pt-12">
-        <Link 
-          href="/#home"
+        <a 
+          href="/"
+          onClick={(e) => {
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              window.location.href = "/";
+            }
+          }}
           className="text-[10px] font-bold tracking-[0.4em] text-zinc-900 uppercase select-none cursor-pointer hover:text-white transition-colors duration-1000 inline-block no-underline"
         >
           @ADVANT GROUP 2026
-        </Link>
+        </a>
       </div>
 
     </footer>

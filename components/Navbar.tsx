@@ -23,12 +23,20 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Főoldal", href: "/#home" },
+    { name: "Főoldal", href: "/" },
     { name: "Rendszerek", href: "/#systems" },
     { name: "Filozófia", href: "/#philosophy" },
     { name: "Miért mi?", href: "/#why-us" },
     { name: "Kapcsolat", href: "/#contact" },
   ];
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    // If already on the home page, force a reload to satisfy "frissitse ujra az oldalt"
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.location.href = "/";
+    }
+  };
 
   return (
     <nav 
@@ -41,9 +49,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Brand */}
-        <Link href="/#home" className="text-xl font-black tracking-tighter text-white hover:opacity-100 transition-opacity lowercase">
+        <a 
+          href="/" 
+          onClick={handleLogoClick}
+          className="text-xl font-black tracking-tighter text-white hover:opacity-100 transition-opacity lowercase"
+        >
           advant
-        </Link>
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
@@ -51,6 +63,12 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => {
+                if (link.href === "/" && window.location.pathname === "/") {
+                  e.preventDefault();
+                  window.location.href = "/";
+                }
+              }}
               className="text-[10px] font-bold tracking-widest text-zinc-400 hover:text-white transition-all lowercase"
             >
               {link.name}
@@ -86,7 +104,13 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => {
+                setIsMobileMenuOpen(false);
+                if (link.href === "/" && window.location.pathname === "/") {
+                  e.preventDefault();
+                  window.location.href = "/";
+                }
+              }}
               className="text-[10px] lowercase font-bold tracking-[0.2em] text-zinc-400 hover:text-white transition-all duration-300"
             >
               {link.name}
