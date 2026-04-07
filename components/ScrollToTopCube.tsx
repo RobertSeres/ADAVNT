@@ -33,8 +33,22 @@ const ScrollToTopCube = () => {
     setIsHovered(false);
   };
 
-  const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Using a more robust scroll-to-top method that works well with smooth scroll libraries
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Fallback for some browsers or cases where Lenis might block the above
+    setTimeout(() => {
+        if (window.scrollY > 0) {
+            window.scrollTo(0, 0);
+        }
+    }, 500);
   };
 
   const size = 40;
@@ -68,11 +82,8 @@ const ScrollToTopCube = () => {
       onClick={handleClick}
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
+      className="fixed bottom-8 right-8 z-[9999]"
       style={{
-        position: 'fixed',
-        bottom: 32,
-        right: 32,
-        zIndex: 50,
         width: size,
         height: size,
         cursor: 'pointer',
@@ -80,6 +91,7 @@ const ScrollToTopCube = () => {
         border: 'none',
         outline: 'none',
         perspective: 300,
+        pointerEvents: 'auto',
       }}
       aria-label="Scroll to top"
     >
