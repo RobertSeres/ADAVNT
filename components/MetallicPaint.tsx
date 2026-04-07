@@ -281,7 +281,11 @@ export default function MetallicPaint({
   const initGL = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return false;
-    const gl = canvas.getContext('webgl2', { antialias: true, alpha: true });
+    const gl = canvas.getContext('webgl2', { 
+      antialias: true, 
+      alpha: true,
+      powerPreference: 'high-performance'
+    });
     if (!gl) return false;
 
     const compile = (src: string, type: number) => {
@@ -343,21 +347,22 @@ export default function MetallicPaint({
   useEffect(() => {
     if (!initGL()) return;
     const canvas = canvasRef.current!;
-    const side = 1000 * devicePixelRatio;
-    canvas.width = side; canvas.height = side;
-    glRef.current!.viewport(0, 0, side, side);
+    
+    // Optimize for mobile: cap side size and DPR
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const maxSide = isMobile ? 600 : 1000;
+    const dpr = typeof window !== 'undefined' ? Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2) : 1;
+    
+    const side = Math.min(maxSide, typeof window !== 'undefined' ? window.innerWidth : maxSide) * dpr;
+    canvas.width = side; 
+    canvas.height = side;
+    
+    if (glRef.current) {
+      glRef.current.viewport(0, 0, side, side);
+    }
     setReady(true);
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, [initGL]);
-
-  useEffect(() => {
-    if (!ready || !imageSrc) return;
-    setTextureReady(false);
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => { uploadTexture(processImage(img)); setTextureReady(true); };
-    img.src = imageSrc;
-  }, [ready, imageSrc, uploadTexture]);
 
   useEffect(() => {
     const gl = glRef.current;

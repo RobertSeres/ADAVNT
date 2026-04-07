@@ -15,6 +15,7 @@ const Hero = () => {
   const moveY = useTransform(springY, [0, typeof window !== 'undefined' ? window.innerHeight : 1000], [3, -3]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) return;
     x.set(e.clientX);
     y.set(e.clientY);
   };

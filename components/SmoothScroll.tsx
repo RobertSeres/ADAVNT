@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
+    // Register ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
@@ -18,20 +21,36 @@ const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
       touchMultiplier: 1.5,
       lerp: 0.1,
       infinite: false,
+      // @ts-ignore - Some versions use syncTouch
+      syncTouch: false, // Let mobile use native touch for best performance
     });
 
     // Synchronize Lenis with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
+    // Add ScrollTrigger.normalizeScroll(true) for smooth mobile experience
+    // This addresses major "janky" issues on mobile browsers like Safari
+    ScrollTrigger.normalizeScroll(true);
+
+    // Config GSAP ticker
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
 
     gsap.ticker.lagSmoothing(0);
 
+    // Pre-calculate scroll triggers on resize
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+
     // Handle anchor links manually for a smoother experience
     const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLAnchorElement;
+      const target = (e.target as HTMLElement).closest("a");
+      if (!target) return;
+      
       const href = target.getAttribute("href");
       
       if (href?.startsWith("#")) {
@@ -40,7 +59,8 @@ const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
         if (element) {
           lenis.scrollTo(element as HTMLElement, {
             offset: -100, // Offset for the floating navbar
-            duration: 1.5,
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           });
         }
       }
@@ -52,6 +72,7 @@ const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
 
     return () => {
       lenis.destroy();
+      window.removeEventListener("resize", handleResize);
       gsap.ticker.remove((time) => {
         lenis.raf(time * 1000);
       });
