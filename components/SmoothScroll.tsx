@@ -51,11 +51,18 @@ const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
       const target = (e.target as HTMLElement).closest("a");
       if (!target) return;
       
-      const href = target.getAttribute("href");
-      
-      if (href?.startsWith("#")) {
+      let href = target.getAttribute("href");
+      if (!href) return;
+
+      // Handle cases like "/#home" or "#home"
+      const isInternalMatch = href.startsWith("#") || (href.startsWith("/#") && window.location.pathname === "/");
+
+      if (isInternalMatch) {
+        const hash = href.includes("#") ? "#" + href.split("#")[1] : "";
+        if (!hash) return;
+
         e.preventDefault();
-        const element = document.querySelector(href);
+        const element = document.querySelector(hash);
         if (element) {
           lenis.scrollTo(element as HTMLElement, {
             offset: -100, // Offset for the floating navbar

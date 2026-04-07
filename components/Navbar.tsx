@@ -41,7 +41,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Brand */}
-        <Link href="/" className="text-xl font-black tracking-tighter text-white hover:opacity-100 transition-opacity lowercase">
+        <Link href="/#home" className="text-xl font-black tracking-tighter text-white hover:opacity-100 transition-opacity lowercase">
           advant
         </Link>
 

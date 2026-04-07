@@ -73,9 +73,12 @@ const Footer = () => {
 
       {/* 3. LAYER: LEGAL BAR */}
       <div className="container mx-auto px-6 border-t border-white/5 pt-12">
-        <div className="text-[10px] font-bold tracking-[0.4em] text-zinc-900 uppercase select-none cursor-default hover:text-white transition-colors duration-1000">
+        <Link 
+          href="/#home"
+          className="text-[10px] font-bold tracking-[0.4em] text-zinc-900 uppercase select-none cursor-pointer hover:text-white transition-colors duration-1000 inline-block no-underline"
+        >
           @ADVANT GROUP 2026
-        </div>
+        </Link>
       </div>
 
     </footer>
