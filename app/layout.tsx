@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
+import AIChatBot from "@/components/AIChatBot";
 
 const familjenGrotesk = localFont({
   src: "../public/fonts/FamiljenGrotesk-Variable.woff2",
@@ -22,11 +23,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${familjenGrotesk.variable} h-full antialiased`}
+      className={`${familjenGrotesk.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="font-sans bg-black">
         {children}
         <CookieConsent />
+        <AIChatBot />
       </body>
     </html>
   );

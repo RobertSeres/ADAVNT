@@ -24,10 +24,10 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Főoldal", href: "/" },
-    { name: "Rendszerek", href: "/#systems" },
-    { name: "Filozófia", href: "/#philosophy" },
-    { name: "Miért mi?", href: "/#why-us" },
-    { name: "Kapcsolat", href: "/#contact" },
+    { name: "Szolgáltatások", href: "/#services" },
+    { name: "Eredmények", href: "/#results" },
+    { name: "Befektetés", href: "/#pricing" },
+    { name: "Gy.I.K.", href: "/#faq" },
   ];
 
   const handleLogoClick = (e: React.MouseEvent) => {
@@ -52,15 +52,16 @@ const Navbar = () => {
         <a 
           href="/" 
           onClick={handleLogoClick}
-          className="text-xl font-black tracking-tighter text-white hover:opacity-100 transition-opacity lowercase"
+          className="text-xl font-black tracking-tighter text-white hover:opacity-100 transition-opacity lowercase relative group"
         >
           advant
+          <div className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all group-hover:w-full duration-500" />
         </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={(e) => {
@@ -72,17 +73,17 @@ const Navbar = () => {
               className="text-[10px] font-bold tracking-widest text-zinc-400 hover:text-white transition-all lowercase"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
         {/* CTA Button */}
-        <a 
-          href="#contact" 
+        <Link 
+          href="/#pricing" 
           className="hidden md:block px-5 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-zinc-200 transition-all active:scale-95"
         >
-          ajánlat
-        </a>
+          beszéljünk
+        </Link>
 
         {/* Mobile Menu Toggle */}
         <button 
@@ -101,7 +102,7 @@ const Navbar = () => {
       >
         <div className="flex flex-col items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={(e) => {
@@ -114,22 +115,22 @@ const Navbar = () => {
               className="text-[10px] lowercase font-bold tracking-[0.2em] text-zinc-400 hover:text-white transition-all duration-300"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
-          <a 
-            href="#contact" 
+          <Link 
+            href="/#pricing" 
             onClick={() => setIsMobileMenuOpen(false)}
             className="px-12 py-6 bg-white text-black font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:bg-zinc-200 active:scale-95 shadow-2xl inline-block no-underline"
           >
-            ajánlat
-          </a>
+            beszéljünk
+          </Link>
         </div>
       </div>
 
-      {/* Scroll Progress Bar */}
-      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-transparent">
+      {/* Scroll Progress Bar (Artistic Gradient) */}
+      <div className="absolute bottom-0 left-0 w-full h-px bg-transparent">
         <div 
-          className="h-full bg-white transition-none"
+          className="h-full bg-linear-to-r from-white/5 via-white/40 to-white shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-none"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>

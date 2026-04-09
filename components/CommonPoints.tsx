@@ -7,97 +7,101 @@ import { motion, AnimatePresence } from "framer-motion";
 const commonPoints = [
   {
     id: "01",
-    title: "Üzleti fókuszú fejlesztés",
-    tagline: "STRATÉGIAI SZEMLÉLET",
+    title: "nem ügynökség, hanem partner",
+    tagline: "FELELŐSSÉG",
+    bgClass: "from-blue-900/20 via-zinc-900/5 to-black",
     columns: [
       {
         label: "PROBLÉMA",
-        content: "A legtöbb ügynökség csak a látványra koncentrál, miközben elhanyagolja az üzleti célokat és a konverziós logikát."
+        content: "a legtöbb ügynökség azt csinálja, amit mondasz. ha te rosszul döntesz, ők rosszul hajtják végre."
       },
       {
         label: "MEGOLDÁS",
-        content: "Minden fejlesztést egy mély üzleti audittal kezdünk, hogy a végeredmény ne csak szép, de jövedelmező is legyen."
+        content: "mi megmondjuk, mit kellene csinálnod — aztán meg is csináljuk. az audit alapján mi írjuk elő a stratégiát, nem te."
       },
       {
         label: "ÉRTÉK",
-        content: "Mérhető bevételnövekedés, alacsonyabb ügyfélszerzési költség és fenntartható digitális ökoszisztéma."
+        content: "nem szolgáltatót veszel, hanem egy csapatot, aki felelősséget vállal a növekedésedért."
       },
       {
         label: "AKCIÓ",
-        content: "Üzleti modell elemzése, UX flow tervezés, technikai architectúra felállítása és ROI alapú ütemterv.",
-        tags: ["STRATÉGIA", "ROI AUDIT", "UX LOGIKA"]
+        content: "growth audit, havi stratégiai hívás, negyedéves review",
+        tags: ["GROWTH AUDIT", "STRATÉGIA", "REVIEW"]
       }
     ]
   },
   {
     id: "02",
-    title: "Saját fejlesztésű rendszerek",
-    tagline: "TECHNOLÓGIAI FÖLÉNY",
+    title: "minden mérhető",
+    tagline: "ADATVEZÉRELT",
+    bgClass: "from-purple-900/20 via-zinc-900/5 to-black",
     columns: [
       {
         label: "PROBLÉMA",
-        content: "A sablonmegoldások és lassú CMS-ek korlátozzák a skálázhatóságot és rontják a felhasználói élményt."
+        content: "a marketingesed küld egy riportot tele impresszióval és eléréssel. fogalmad sincs, hogy abból mennyi lett fizető ügyfél."
       },
       {
         label: "MEGOLDÁS",
-        content: "Zárt, optimalizált stack-kel dolgozunk (Next.js, React), ami villámgyors és bármikor továbbfejleszthető."
+        content: "nálunk minden konverzió követve van. tudod, honnan jött a lead, mennyibe került, és mennyi bevételt hozott."
       },
       {
         label: "ÉRTÉK",
-        content: "99+ PageSpeed pontszám, maximális biztonság és nulla felesleges kód, ami hátráltatná a növekedést."
+        content: "valós idejű dashboard, ahol te is látod a számokat — nem havi egyszer, hanem mindig."
       },
       {
         label: "AKCIÓ",
-        content: "Egyedi keretrendszer építése, API integrációk, skálázható felhő-infrastruktúra telepítése.",
-        tags: ["NEXT.JS", "REACT", "SPEED OPT"]
+        content: "GA4 setup, konverziókövetés, looker studio dashboard, havi üzleti riport",
+        tags: ["GA4", "KONVERZIÓ", "DASHBOARD"]
       }
     ]
   },
   {
     id: "03",
-    title: "Adatvezérelt döntéshozatal",
-    tagline: "PONTOSSÁG ÉS MÉRÉS",
+    title: "saját tech, nincs sablon",
+    tagline: "TECHNOLÓGIA",
+    bgClass: "from-emerald-900/20 via-zinc-900/5 to-black",
     columns: [
       {
         label: "PROBLÉMA",
-        content: "Sok cég vakon költ marketingre és fejlesztésre, anélkül hogy látná az egyes csatornák valódi teljesítményét."
+        content: "a legtöbb weboldal wordpress sablon, ami lassú, sérülékeny, és úgy néz ki, mint más 10.000 oldal."
       },
       {
         label: "MEGOLDÁS",
-        content: "Minden rendszerünkbe beépítjük a mélyanalitikai méréseket, így minden forint útja pontosan követhető."
+        content: "next.js, react, egyedi fejlesztés. gyors, biztonságos, skálázható — és bármikor továbbfejleszthető."
       },
       {
         label: "ÉRTÉK",
-        content: "Valós idejű rálátás az üzleti folyamatokra, prediktív elemzések és optimalizált hirdetési büdzsé."
+        content: "99+ PageSpeed, nulla felesleges kód, és egy rendszer, ami nő veled együtt."
       },
       {
         label: "AKCIÓ",
-        content: "Analitikai setup, heatmapping, konverziós tölcsér mérés és heti szintű adat-alapú finomhangolás.",
-        tags: ["ANALYTICS", "BIG DATA", "MARKETING BI"]
+        content: "egyedi keretrendszer, API integrációk, folyamatos fejlesztés",
+        tags: ["NEXT.JS", "REACT", "PERFORMANCE"]
       }
     ]
   },
   {
     id: "04",
-    title: "Hosszú távú partnerség",
-    tagline: "KÖZÖS NÖVEKEDÉS",
+    title: "nem projekt, hanem folyamat",
+    tagline: "HAVI MODELL",
+    bgClass: "from-rose-900/20 via-zinc-900/5 to-black",
     columns: [
       {
         label: "PROBLÉMA",
-        content: "Az ügynökségek sokszor magára hagyják az ügyfelet az átadás után, support és továbbfejlesztés nélkül."
+        content: "megcsinálják a weboldaladat, adnak egy számlát, aztán nem hallasz róluk soha többet."
       },
       {
         label: "MEGOLDÁS",
-        content: "Dedikált support csapatunk és stratégiai tanácsadóink folyamatosan figyelik és finomítják a rendszereit."
+        content: "nálunk havi előfizetéssel dolgozunk. dedikált csapat, slack csatorna, folyamatos fejlesztés és support."
       },
       {
         label: "ÉRTÉK",
-        content: "Biztonság, kiszámíthatalan piaci változásokra való gyors reagálás és folyamatos technológiai frissítés."
+        content: "nem kell aggódnod, hogy mi történik a weboldallal, a tartalommal, a hirdetésekkel — mi figyeljük, te dolgozol."
       },
       {
         label: "AKCIÓ",
-        content: "Havi auditok, biztonsági frissítések, folyamatos A/B tesztelés és stratégiai skálázás.",
-        tags: ["SUPPORT", "SCALING", "EVOLUTION"]
+        content: "dedikált slack, havi riport, negyedéves stratégiai review, folyamatos support",
+        tags: ["SUPPORT", "SLACK", "FOLYAMATOS"]
       }
     ]
   }
@@ -105,7 +109,11 @@ const commonPoints = [
 
 const PointItem = ({ item, isOpen, onToggle }: any) => {
   return (
-    <div className={`border-b border-white/10 transition-all duration-700 ${isOpen ? "bg-zinc-950/40" : ""}`}>
+    <div className={`border-b border-white/10 transition-all duration-700 relative overflow-hidden ${isOpen ? "bg-zinc-950/40" : ""}`}>
+      {/* Subtle Artistic Glow on Active */}
+      {isOpen && (
+        <div className="absolute inset-0 bg-linear-to-r from-white/5 via-transparent to-transparent pointer-events-none opacity-50" />
+      )}
       <button
         onClick={onToggle}
         className="w-full py-10 px-4 md:px-8 flex items-center justify-between group transition-colors hover:bg-white/[0.02]"
@@ -140,9 +148,18 @@ const PointItem = ({ item, isOpen, onToggle }: any) => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
           >
-            <div className="px-8 md:px-16 pb-16 pt-4">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-l border-white/5 pl-8 md:pl-12">
+            {/* Smooth CSS Gradient Fade-In instead of WebGL glitch */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className={`absolute inset-0 z-0 bg-linear-to-br ${item.bgClass}`}
+            />
+
+            <div className="px-8 md:px-16 pb-16 pt-4 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-l border-white/10 pl-8 md:pl-12">
                 {item.columns.map((col: any, idx: number) => (
                   <div key={idx} className="flex flex-col gap-6 group/col">
                     <div className="flex items-center gap-3">
@@ -178,16 +195,20 @@ const CommonPoints = () => {
   const [openId, setOpenId] = useState<string | null>("01");
 
   return (
-    <section id="why-us" className="bg-black py-32 border-t border-white/5 relative z-10 overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="why-us" className="bg-black py-32 border-b border-white/10 relative z-10 overflow-hidden">
+      {/* Aesthetic lines */}
+      <div className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-px h-full bg-linear-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
         
         {/* Header Breadcrumb */}
         <div className="mb-20">
           <span className="text-[10px] font-bold tracking-[0.4em] text-zinc-600 block mb-4 uppercase">
-            03 / WHY AD-V
+            04 / RESULTS
           </span>
           <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-white lowercase">
-            miért mi?
+            mit csinálunk másképp
           </h2>
         </div>
 

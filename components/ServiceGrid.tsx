@@ -13,7 +13,7 @@ type ServiceProps = {
   colors: string[];
 };
 
-const ServiceCard = ({ title, description, ctaText, href, bgClass, borderColor = "border-white/5", colors }: ServiceProps) => (
+const ServiceCard = ({ title, description, ctaText, href, bgClass, borderColor = "border-white/10", colors }: ServiceProps) => (
   <div className={`relative h-[50vh] min-h-[400px] flex flex-col overflow-hidden group border-r border-b ${borderColor} ${bgClass}`}>
     {/* Animated Grainient Background on Hover */}
     <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-in-out">
@@ -31,13 +31,19 @@ const ServiceCard = ({ title, description, ctaText, href, bgClass, borderColor =
       <div className="absolute inset-0 bg-black/60 pointer-events-none" />
     </div>
 
+    {/* Artistic Scanner Line (Industrial + SciFi) */}
+    <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
+      <div className="w-full h-px bg-white/20 shadow-[0_0_15px_rgba(255,255,255,0.4)] transform -translate-y-[100px] group-hover:translate-y-[600px] transition-transform duration-[2.5s] ease-in-out opacity-0 group-hover:opacity-100" />
+    </div>
+
     <div className="relative z-10 w-full h-full p-8 md:p-12 flex flex-col justify-end overflow-hidden">
       {/* Animated white line on hover */}
       <div className="absolute inset-x-0 bottom-0 h-px bg-white opacity-0 group-hover:opacity-100 transition-all duration-700" />
       
       <div className="relative z-10 max-w-lg">
         <div className="w-12 h-px bg-white/10 group-hover:bg-white transition-all mb-6" />
-        <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-zinc-600 mb-2 block transition-all duration-500 group-hover:tracking-[0.6em] group-hover:text-white">
+        <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-zinc-600 mb-2 transition-all duration-500 group-hover:tracking-[0.6em] group-hover:text-white flex items-center gap-2">
+          <span className="w-1 h-1 rounded-full bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           advant
         </span>
         <h3 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter leading-[0.9] group-hover:scale-[1.02] transition-transform duration-500 origin-left text-white lowercase">
@@ -68,44 +74,64 @@ const ServiceCard = ({ title, description, ctaText, href, bgClass, borderColor =
 const ServiceGrid = () => {
   const services = [
     {
-      title: "WEB",
-      description: "Prémium webfejlesztés, ami ügyfelet hoz – nem csak jól néz ki.",
+      title: "stratégia & üzleti intelligencia",
+      description: "üzleti audit, növekedési terv, KPI-k, negyedéves review. nem marketinget csinálunk — üzletet építünk.",
       ctaText: "Részletek →",
-      href: "/services/web",
+      href: "/szolgaltatasok?from=services",
       bgClass: "bg-black",
-      colors: ["#22c55e", "#000000", "#ffffff"] // Green, Black, White
+      colors: ["#22c55e", "#000000", "#ffffff"]
     },
     {
-      title: "INGATLAN MEDIA",
-      description: "Ingatlan videók és drón tartalom, ami felgyorsítja az eladást.",
+      title: "webfejlesztés & konverzió",
+      description: "nem szép oldalakat építünk, hanem olyanokat, amik hoznak. landing page-ek, A/B tesztek, sebesség, UX — minden az adatok alapján.",
       ctaText: "Részletek →",
-      href: "/services/media",
+      href: "/szolgaltatasok?from=services",
       bgClass: "bg-black",
-      colors: ["#ffffff", "#3b82f6", "#1d4ed8"] // White, Blue, Dark Blue
+      colors: ["#ffffff", "#3b82f6", "#1d4ed8"]
     },
     {
-      title: "SCALE",
-      description: "Vendéglátóhelyek digitális rendszere, ami több foglalást hoz.",
+      title: "tartalom & videó produkció",
+      description: "social videók, brand content, testimonialok, fotó. nem posztolunk, mert kell — azért posztolunk, ami működik.",
       ctaText: "Részletek →",
-      href: "/services/scale",
+      href: "/szolgaltatasok?from=services",
       bgClass: "bg-black",
-      colors: ["#fef08a", "#eab308", "#a855f7"] // Lemon, Gold, Purple
+      colors: ["#fef08a", "#eab308", "#a855f7"]
     },
     {
-      title: "DRONERA",
-      description: "Ipari drónmegoldások felméréshez, dokumentációhoz és vizsgálathoz.",
+      title: "kampánykezelés & analitika",
+      description: "google ads, meta, tiktok — ahol a te ügyfeled van. minden forintot mérünk, és a riportot úgy kapod, hogy ÉRTSD: ennyi ment be, ennyi jött ki.",
       ctaText: "Részletek →",
-      href: "/services/dronera",
+      href: "/szolgaltatasok?from=services",
       bgClass: "bg-black",
-      colors: ["#000000", "#f97316", "#6b7280"] // Black, Orange, Gray
+      colors: ["#000000", "#f97316", "#6b7280"]
     }
   ];
 
   return (
-    <section id="systems" className="bg-black text-white grid grid-cols-1 md:grid-cols-2 overflow-hidden shadow-2xl relative z-1">
+    <section id="services" className="bg-black text-white relative z-10 border-b border-white/10 overflow-hidden">
+      {/* Aesthetic lines */}
+      <div className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-px h-full bg-linear-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
+
+      {/* Section Header */}
+      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
+        <div className="mb-0">
+          <span className="text-[10px] font-bold tracking-[0.4em] text-zinc-600 block mb-4 uppercase">
+            03 / TOOLS
+          </span>
+          <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-white lowercase mb-6">
+            amivel dolgozunk
+          </h2>
+          <p className="text-lg md:text-xl text-zinc-500 font-light lowercase max-w-2xl">
+            nem szolgáltatást választasz — mi döntjük el az audit alapján, mire van szükséged.
+          </p>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 shadow-2xl relative z-10 border-t border-white/10">
       {services.map((service, idx) => (
         <ServiceCard key={idx} {...service} />
       ))}
+      </div>
     </section>
   );
 };
