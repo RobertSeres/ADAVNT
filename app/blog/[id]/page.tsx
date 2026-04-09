@@ -8,8 +8,13 @@ import { notFound } from "next/navigation";
 import Grainient from "@/components/Grainient";
 import { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const post = await getBlogPost(params.id);
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const post = await getBlogPost(id);
   if (!post) return { title: "Blog Post Not Found" };
   
   return {
@@ -18,8 +23,8 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function BlogPostPage({ params }: Props) {
+  const { id } = await params;
   const post = await getBlogPost(id);
 
   if (!post) {
