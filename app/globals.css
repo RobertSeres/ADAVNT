@@ -112,26 +112,30 @@ html.lenis, html.lenis body {
 /* Blog Content Styles */
 .blog-content h2 {
   color: white;
-  font-size: 1.875rem;
+  font-size: 2.5rem;
   font-weight: 900;
-  margin-top: 4rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  line-height: 1.1;
   text-transform: lowercase;
+  letter-spacing: -0.04em;
 }
 
 .blog-content h3 {
   color: white;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
   text-transform: lowercase;
+  letter-spacing: -0.02em;
 }
 
 .blog-content p {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   text-transform: lowercase;
+  font-weight: 300;
+  line-height: 1.8;
 }
 
 .blog-content strong {
@@ -146,12 +150,13 @@ html.lenis, html.lenis body {
 }
 
 .blog-content ul {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   list-style-type: disc;
   padding-left: 1.5rem;
 }
 
 .blog-content li {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   text-transform: lowercase;
+  line-height: 1.6;
 }

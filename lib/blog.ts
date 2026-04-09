@@ -11,6 +11,8 @@ export interface BlogPost {
   category: string;
   readingTime: string;
   colors: string[];
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 const POSTS_DIR = path.join(process.cwd(), 'public');
@@ -40,8 +42,11 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     const lines = rawContent.split('\n');
     const title = lines[0].replace(/^#\s*/, '').replace(/\s*—.*$/, '').trim();
     
+    const titleLine = lines.find(l => l.includes('**Meta title:**'));
+    const seoTitle = titleLine ? titleLine.replace('**Meta title:**', '').trim() : title;
+
     const descLine = lines.find(l => l.includes('**Meta description:**'));
-    const excerpt = descLine ? descLine.replace('**Meta description:**', '').trim() : '';
+    const seoDescription = descLine ? descLine.replace('**Meta description:**', '').trim() : '';
     
     const timeLine = lines.find(l => l.includes('**Olvasási idő:**'));
     const readingTime = timeLine ? timeLine.replace('**Olvasási idő:**', '').trim() : '8 perc';
@@ -62,12 +67,14 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     return {
       id,
       title: title.toLowerCase(),
-      excerpt: excerpt.toLowerCase(),
+      excerpt: seoDescription.toLowerCase(),
       content: marked(mainContent) as string,
       date: '2024.04.10', // Standard date for these new posts
       category,
       readingTime,
-      colors: colorSets[index % colorSets.length]
+      colors: colorSets[index % colorSets.length],
+      seoTitle,
+      seoDescription
     };
   });
 
