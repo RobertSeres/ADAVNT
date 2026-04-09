@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import TrustStrip from "@/components/TrustStrip";
+
 import Philosophy from "@/components/Philosophy";
 import Manifesto from "@/components/Manifesto";
 import ServiceGrid from "@/components/ServiceGrid";
@@ -8,7 +8,7 @@ import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/components/SmoothScroll";
-import Results from "@/components/Results";
+
 import Pricing from "@/components/Pricing";
 
 export default function Home() {
