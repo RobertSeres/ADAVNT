@@ -10,18 +10,29 @@ export interface BlogPost {
   date: string;
   category: string;
   readingTime: string;
+  colors: string[];
 }
 
 const POSTS_DIR = path.join(process.cwd(), 'public');
+
+// Colors for the hover gradients (matched to the services aesthetic)
+const colorSets = [
+  ["#22c55e", "#000000", "#ffffff"], // Green-ish
+  ["#ffffff", "#3b82f6", "#1d4ed8"], // Blue-ish
+  ["#fef08a", "#eab308", "#a855f7"], // Yellow/Purple
+  ["#000000", "#f97316", "#6b7280"], // Orange/Gray
+  ["#00f2ff", "#bc13fe", "#000000"], // Cyan/Purple
+  ["#ef4444", "#000000", "#ffffff"]  // Red-ish
+];
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
   const files = fs.readdirSync(POSTS_DIR);
   const mdFiles = files.filter(f => f.endsWith('.md') && f.match(/^[0-9]{2}-/));
   
-  // Only take the first 5 as requested
-  const targetedFiles = mdFiles.sort().slice(0, 5);
+  // Sort and take the posts
+  const targetedFiles = mdFiles.sort();
 
-  const posts = targetedFiles.map(filename => {
+  const posts = targetedFiles.map((filename, index) => {
     const fullPath = path.join(POSTS_DIR, filename);
     const rawContent = fs.readFileSync(fullPath, 'utf8');
     
@@ -55,7 +66,8 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       content: marked(mainContent) as string,
       date: '2024.04.10', // Standard date for these new posts
       category,
-      readingTime
+      readingTime,
+      colors: colorSets[index % colorSets.length]
     };
   });
 
