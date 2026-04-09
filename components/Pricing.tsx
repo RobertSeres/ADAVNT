@@ -1,14 +1,9 @@
-"use client";
-
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import Grainient from './Grainient';
-import { Check, ArrowRight, TrendingUp, Zap, Server, BarChart } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Check, ArrowRight, Zap } from 'lucide-react';
+import PricingCard from './PricingCard';
 
 const Pricing = () => {
-  const [hoveredTier, setHoveredTier] = useState<string | null>(null);
-
   const foundationFeatures = [
     "Átfogó Üzleti Audit & Konverziós Stratégia",
     "Dedikált Next.js Prémium Weboldalfejlesztés",
@@ -87,18 +82,8 @@ const Pricing = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-px md:bg-white/10 border border-white/10 relative">
 
           {/* Tier 1: Foundation */}
-          <div
-            className="bg-black relative group overflow-hidden"
-            onMouseEnter={() => setHoveredTier("foundation")}
-            onMouseLeave={() => setHoveredTier(null)}
-          >
-            {/* Hover Background Engine */}
-            <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${hoveredTier === "foundation" ? "opacity-100" : "opacity-0"}`}>
-              <Grainient color1="#ffffff" color2="#3b82f6" color3="#000000" timeSpeed={0.3} zoom={0.8} noiseScale={3.0} grainAmount={0.15} className="h-full w-full" />
-              <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />
-            </div>
-
-            <div className="relative z-10 p-10 md:p-14 h-full flex flex-col">
+          <PricingCard tier="foundation" colors={["#ffffff", "#3b82f6", "#000000"]}>
+            <div className="p-10 md:p-14 h-full flex flex-col">
               <div className="mb-10">
                 <h3 className="text-3xl font-black text-white lowercase tracking-tight mb-2">
                   growth foundation
@@ -140,21 +125,11 @@ const Pricing = () => {
                 kiválasztom
               </Link>
             </div>
-          </div>
+          </PricingCard>
 
           {/* Tier 2: Scale */}
-          <div
-            className="bg-black relative group overflow-hidden"
-            onMouseEnter={() => setHoveredTier("scale")}
-            onMouseLeave={() => setHoveredTier(null)}
-          >
-            {/* Hover Background Engine */}
-            <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${hoveredTier === "scale" ? "opacity-100" : "opacity-0"}`}>
-              <Grainient color1="#ffffff" color2="#a855f7" color3="#000000" timeSpeed={0.3} zoom={0.8} noiseScale={3.0} grainAmount={0.15} className="h-full w-full" />
-              <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />
-            </div>
-
-            <div className="relative z-10 p-10 md:p-14 h-full flex flex-col">
+          <PricingCard tier="scale" colors={["#ffffff", "#a855f7", "#000000"]}>
+            <div className="p-10 md:p-14 h-full flex flex-col">
               <div className="mb-10">
                 <div className="inline-block px-3 py-1 bg-white/10 border border-white/20 mb-4">
                   <span className="text-[9px] text-white font-bold tracking-[0.3em] uppercase flex items-center gap-2">
@@ -201,7 +176,7 @@ const Pricing = () => {
                 skálázódni akarok <ArrowRight size={14} />
               </Link>
             </div>
-          </div>
+          </PricingCard>
 
         </div>
 

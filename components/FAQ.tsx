@@ -1,8 +1,5 @@
-"use client";
-
-import React, { useState } from "react";
-import { Plus, Minus } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { FAQListClient } from "./FAQClient";
 
 const faqData = [
   {
@@ -70,62 +67,11 @@ const extraFaqData = [
   },
   {
     question: "tényszerűen: mikor érdemes veletek, mint growth partnerrel szerződnöm?",
-    answer: "akkor, ha a céged túllépett a kezdeti szárnypróbálgatáson, van egy stabil piacod, és megvan a költségvetésed is egy komoly digitális szintlépésre. ha végleg eleged van az elszigetelt, csak kattintásokról és fiktív elérésekről beszélő online marketing ügynökség típusú cégekből, és végre profitközpontú, fekete-fehér skálázódást akarsz a piacon."
+    answer: "akkor, ha a céged túllépett a kezdeti szarnypróbálgatáson, van egy stabil piacod, és megvan a költségvetésed is egy komoly digitális szintlépésre. ha végleg eleged van az elszigetelt, csak kattintásokról és fiktív elérésekről beszélő online marketing ügynökség típusú cégekből, és végre profitközpontú, fekete-fehér skálázódást akarsz a piacon."
   }
 ];
 
-const FAQItem = ({ question, answer, isOpen, onClick, index }: any) => {
-  return (
-    <div className={`border-b border-white/10 overflow-hidden transition-all duration-500 relative ${isOpen ? "bg-zinc-950/20" : ""}`}>
-      {/* Subtle Artistic Glow on Active */}
-      {isOpen && (
-        <div className="absolute inset-0 bg-linear-to-r from-white/5 via-transparent to-transparent pointer-events-none opacity-50" />
-      )}
-      <button
-        onClick={onClick}
-        className="w-full py-8 px-4 flex items-center justify-between text-left group hover:bg-white/[0.02] transition-colors"
-      >
-        <div className="flex items-center gap-6">
-          <span className="text-[10px] font-bold text-zinc-800 transition-colors group-hover:text-zinc-500">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <span className="text-sm md:text-base font-bold tracking-tight text-zinc-300 group-hover:text-white transition-colors lowercase">
-            {question}
-          </span>
-        </div>
-        <div className="flex-shrink-0 ml-4">
-          {isOpen ? (
-            <Minus size={18} className="text-white" />
-          ) : (
-            <Plus size={18} className="text-zinc-700 group-hover:text-white transition-colors" />
-          )}
-        </div>
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="px-14 pb-10 text-zinc-500 text-sm md:text-base font-light leading-relaxed max-w-4xl lowercase">
-              {answer}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const [showAll, setShowAll] = useState(false);
-
-  const visibleFaqData = showAll ? [...faqData, ...extraFaqData] : faqData;
-
   return (
     <section id="faq" className="bg-black py-32 border-b border-white/10 relative z-10 overflow-hidden">
       {/* Aesthetic lines */}
@@ -133,8 +79,6 @@ const FAQ = () => {
       <div className="absolute top-0 right-1/4 w-px h-full bg-linear-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-
-        {/* Header */}
         <div className="mb-20">
           <span className="text-[10px] font-bold tracking-[0.4em] text-zinc-600 block mb-4 uppercase">
             05 / FAQ
@@ -144,42 +88,7 @@ const FAQ = () => {
           </h2>
         </div>
 
-        {/* FAQ List */}
-        <div className="max-w-6xl mx-auto border-t border-white/10 mt-20 relative z-10 transition-all duration-1000">
-          <AnimatePresence>
-            {visibleFaqData.map((item, index) => (
-              <motion.div
-                key={`${item.question}-${index}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, delay: (index > 5 && showAll) ? ((index - 5) * 0.1) : 0 }}
-              >
-                <FAQItem
-                  index={index}
-                  question={item.question}
-                  answer={item.answer}
-                  isOpen={openIndex === index}
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {/* Show More Toggle Button */}
-        <div className="flex justify-center mt-16 relative z-10">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="group flex flex-col items-center gap-4 text-zinc-500 hover:text-white transition-colors"
-          >
-            <span className="text-[10px] font-bold tracking-[0.3em] uppercase">
-              {showAll ? "kevesebb kérdés elrejtése" : "további szakmai kérdések"}
-            </span>
-            <div className="w-px h-16 bg-white/10 group-hover:bg-white/40 transition-colors" />
-          </button>
-        </div>
-
+        <FAQListClient initialItems={faqData} extraItems={extraFaqData} />
       </div>
     </section>
   );
