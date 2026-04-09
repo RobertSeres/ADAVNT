@@ -15,9 +15,10 @@ const Footer = () => {
   ];
 
   const info = [
-    { name: "mit csinálunk másképp?", href: "/#why-us" },
-    { name: "értékrend (alapítói levél)", href: "/#philosophy" },
-    { name: "árazás és csomagválasztás", href: "/#pricing" }
+    { name: "mit csinálunk másképp?", href: "/miert-mi" },
+    { name: "hogyan működik a folyamat?", href: "/hogyan-mukodik" },
+    { name: "árazás és befektetés", href: "/arak" },
+    { name: "eredmények és referenciák", href: "/eredmenyek" }
   ];
 
   const legal = [

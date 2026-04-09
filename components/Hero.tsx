@@ -64,7 +64,7 @@ const Hero = () => {
 
         <div className="animate-fade-in-up pointer-events-auto" style={{ animationDelay: '600ms' }}>
           <Link
-            href="/#pricing"
+            href="/arak"
             className="px-12 py-6 bg-white text-black font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:bg-zinc-200 active:scale-95 shadow-2xl inline-block no-underline"
           >
             nézzük meg, hol tartasz →
