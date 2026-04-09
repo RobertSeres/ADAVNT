@@ -40,7 +40,7 @@ const Footer = () => {
       <div className="absolute top-0 right-1/4 w-px h-full bg-linear-to-b from-transparent via-white/10 to-transparent pointer-events-none hidden md:block" />
       <div className="absolute top-0 left-1/2 w-px h-full bg-linear-to-b from-transparent via-white/5 to-transparent pointer-events-none hidden md:block" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="w-full px-6 md:px-12 lg:px-24 relative z-10">
 
         {/* TOP LAYER: HUGE LOGO AESTHETIC */}
         <div className="mb-24 pb-12 border-b border-white/10 overflow-hidden flex items-baseline justify-between select-none group">

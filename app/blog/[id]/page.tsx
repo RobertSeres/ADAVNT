@@ -51,7 +51,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         <div className="pt-32 pb-40 container mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto bg-black p-8 md:p-16 border border-white/5">
             <Link 
               href="/blog" 
               className="text-[10px] font-bold tracking-widest text-zinc-500 hover:text-white mb-16 flex items-center gap-2 transition-all uppercase no-underline"
@@ -82,7 +82,7 @@ export default async function BlogPostPage({ params }: Props) {
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
-            <div className="mt-32 p-12 border border-white/10 bg-white/5 backdrop-blur-sm relative overflow-hidden group">
+            <div className="mt-32 p-12 border border-white/10 bg-white/1 backdrop-blur-sm relative overflow-hidden group">
               <div className="relative z-10">
                 <h3 className="text-3xl font-black lowercase mb-6 tracking-tighter">tetszett a cikk?</h3>
                 <p className="text-zinc-400 mb-10 max-w-md lowercase">
