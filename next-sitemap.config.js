@@ -2,10 +2,17 @@
 module.exports = {
   siteUrl: 'https://advant.hu',
   generateRobotsTxt: true,
-  exclude: ['/server-sitemap.xml'], // if applicable
+  changefreq: 'weekly',
+  priority: 0.7,
+  sitemapSize: 7000,
+  exclude: ['/legal/*'],
   robotsTxtOptions: {
-    additionalSitemaps: [
-      'https://advant.hu/sitemap.xml',
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/legal/'],
+      },
     ],
   },
 }

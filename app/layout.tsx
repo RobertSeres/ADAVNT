@@ -12,10 +12,48 @@ const familjenGrotesk = localFont({
 
 export const metadata: Metadata = {
   title: "Advant - Growth Partner",
-  description: "A te growth partnered. Stratégia, végrehajtás, eredmény.",
+  description: "A te growth partnered. Stratégia, végrehajtás, eredmény. Adatvezérelt növekedés modern eszközökkel.",
   alternates: {
-    canonical: 'https://advant.hu',
+    canonical: "https://advant.hu",
   },
+  openGraph: {
+    title: "Advant - Growth Partner",
+    description: "A te growth partnered. Stratégia, végrehajtás, eredmény.",
+    url: "https://advant.hu",
+    siteName: "Advant",
+    locale: "hu_HU",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Advant",
+  "url": "https://advant.hu",
+  "logo": "https://advant.hu/advant-logo.svg",
+  "sameAs": [
+    "https://facebook.com/advant",
+    "https://linkedin.com/company/advant",
+    "https://instagram.com/advant"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+36708856534",
+    "contactType": "sales",
+    "email": "hello@advant.hu"
+  }
 };
 
 export default function RootLayout({
@@ -28,7 +66,11 @@ export default function RootLayout({
       lang="en"
       className={`${familjenGrotesk.variable} antialiased`}
     >
-      <body className="font-sans bg-black">
+      <body className="font-sans bg-black text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
         <CookieConsent />
         <AIChatBot />
