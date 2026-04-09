@@ -17,7 +17,7 @@ const Manifesto = () => {
           transition={{ duration: 0.8 }}
           className="border-l border-white/20 pl-8 md:pl-16 py-4"
         >
-          <span className="text-[10px] font-bold tracking-[0.4em] text-zinc-600 block mb-8 uppercase flex items-center gap-2">
+          <span className="text-[10px] font-bold tracking-[0.4em] text-zinc-600 mb-8 uppercase flex items-center gap-2">
             <span className="w-1 h-1 bg-white" /> Alapítói Szemléletmód
           </span>
           <h3 className="text-3xl md:text-5xl font-light text-zinc-300 leading-tight lowercase mb-12">

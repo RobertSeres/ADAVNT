@@ -7,9 +7,13 @@ import { ArrowLeft, Check, Send } from "lucide-react";
 import Grainient from "@/components/Grainient";
 import Link from "next/link";
 
+import { sanitizeInput, ApplyFormSchema } from "@/lib/security";
+
 const ApplyContent = () => {
   const [tier, setTier] = useState<string>("foundation");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -128,17 +132,46 @@ const ApplyContent = () => {
                 <form 
                   className="flex flex-col gap-6" 
                   autoComplete="off"
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
+                    setIsSubmitting(true);
+                    setErrors({});
+
+                    // 1. Sanitize all inputs
+                    const sanitizedData = {
+                      name: sanitizeInput(formData.name),
+                      company: sanitizeInput(formData.company),
+                      email: sanitizeInput(formData.email),
+                      phone: sanitizeInput(formData.phone),
+                      goal: sanitizeInput(formData.goal),
+                    };
+
+                    // 2. Validate with Zod
+                    const result = ApplyFormSchema.safeParse(sanitizedData);
+
+                    if (!result.success) {
+                      const formattedErrors: Record<string, string> = {};
+                      result.error.issues.forEach((issue) => {
+                        formattedErrors[String(issue.path[0])] = issue.message;
+                      });
+                      setErrors(formattedErrors);
+                      setIsSubmitting(false);
+                      return;
+                    }
+
+                    // 3. Simulate API Call (with a small delay for UX)
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                    
                     setIsSubmitted(true);
+                    setIsSubmitting(false);
                   }}
                 >
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3 relative">
                       <label className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-500 flex justify-between">
-                        <span>Keresztnév / Vezetéknév</span>
-                        {formData.name.length > 2 && <Check size={12} className="text-emerald-500" />}
+                        <span className={errors.name ? "text-red-400" : ""}>Keresztnév / Vezetéknév</span>
+                        {formData.name.length > 2 && !errors.name && <Check size={12} className="text-emerald-500" />}
                       </label>
                       <input 
                         type="text" 
@@ -150,8 +183,8 @@ const ApplyContent = () => {
                     </div>
                     <div className="flex flex-col gap-3 relative">
                       <label className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-500 flex justify-between">
-                        <span>Cég neve / Weboldal</span>
-                        {formData.company.length > 2 && <Check size={12} className="text-emerald-500" />}
+                        <span className={errors.company ? "text-red-400" : ""}>Cég neve / Weboldal</span>
+                        {formData.company.length > 2 && !errors.company && <Check size={12} className="text-emerald-500" />}
                       </label>
                       <input 
                         type="text" 
@@ -166,8 +199,8 @@ const ApplyContent = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3 relative">
                       <label className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-500 flex justify-between">
-                        <span>Email cím</span>
-                        {formData.email.includes('@') && formData.email.includes('.') && <Check size={12} className="text-emerald-500" />}
+                        <span className={errors.email ? "text-red-400" : ""}>Email cím</span>
+                        {formData.email.includes('@') && formData.email.includes('.') && !errors.email && <Check size={12} className="text-emerald-500" />}
                       </label>
                       <input 
                         type="email" 
@@ -179,8 +212,8 @@ const ApplyContent = () => {
                     </div>
                     <div className="flex flex-col gap-3 relative">
                       <label className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-500 flex justify-between">
-                        <span>Telefonszám (Közvetlen)</span>
-                        {formData.phone.length > 5 && <Check size={12} className="text-emerald-500" />}
+                        <span className={errors.phone ? "text-red-400" : ""}>Telefonszám (Közvetlen)</span>
+                        {formData.phone.length > 5 && !errors.phone && <Check size={12} className="text-emerald-500" />}
                       </label>
                       <input 
                         type="tel" 
@@ -194,8 +227,8 @@ const ApplyContent = () => {
 
                   <div className="flex flex-col gap-3 mt-4 relative">
                     <label className="text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-500 flex justify-between">
-                      <span>Hol vagy most, és mi a legnagyobb célod?</span>
-                      {formData.goal.length > 10 && <Check size={12} className="text-emerald-500" />}
+                      <span className={errors.goal ? "text-red-400" : ""}>Hol vagy most, és mi a legnagyobb célod?</span>
+                      {formData.goal.length > 10 && !errors.goal && <Check size={12} className="text-emerald-500" />}
                     </label>
                     <textarea 
                       value={formData.goal}
@@ -206,8 +239,12 @@ const ApplyContent = () => {
                     />
                   </div>
 
-                  <button type="submit" className={`mt-6 w-full py-6 text-black text-xs font-black tracking-[0.3em] uppercase transition-all duration-300 flex items-center justify-center gap-3 ${isScale ? 'bg-purple-400 hover:bg-purple-300' : 'bg-blue-500 hover:bg-blue-400'}`}>
-                    Jelentkezés beküldése <Send size={14} />
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className={`mt-6 w-full py-6 text-black text-xs font-black tracking-[0.3em] uppercase transition-all duration-300 flex items-center justify-center gap-3 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''} ${isScale ? 'bg-purple-400 hover:bg-purple-300' : 'bg-blue-500 hover:bg-blue-400'}`}
+                  >
+                    {isSubmitting ? 'Küldés...' : 'Jelentkezés beküldése'} <Send size={14} />
                   </button>
                   
                   <div className="text-center mt-2 flex items-center justify-center gap-2 text-[10px] text-zinc-500">

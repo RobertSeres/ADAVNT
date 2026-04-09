@@ -29,7 +29,7 @@ const Philosophy = () => {
       <div className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
       <div className="absolute top-0 right-1/4 w-px h-full bg-linear-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10 font-[var(--font-familjen-grotesk)]">
+      <div className="container mx-auto px-6 relative z-10 font-(--font-familjen-grotesk)">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-20">

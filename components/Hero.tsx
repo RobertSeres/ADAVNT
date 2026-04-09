@@ -3,7 +3,7 @@ import { HeroClient } from './HeroClient';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative h-screen w-full bg-black font-[var(--font-familjen-grotesk)]">
+    <section id="home" className="relative h-screen w-full bg-black font-(--font-familjen-grotesk)">
       <HeroClient 
         title="advant"
         subtitle={

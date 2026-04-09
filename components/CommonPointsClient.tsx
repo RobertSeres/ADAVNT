@@ -20,7 +20,7 @@ export function CommonPointItemClient({
       )}
       <button
         onClick={onToggle}
-        className="w-full py-10 px-4 md:px-8 flex items-center justify-between group transition-colors hover:bg-white/[0.02] transition-colors"
+        className="w-full py-10 px-4 md:px-8 flex items-center justify-between group hover:bg-white/2 transition-colors"
       >
         <div className="flex items-center gap-8 md:gap-16">
           <span className="text-[10px] font-bold text-zinc-800 transition-colors group-hover:text-zinc-500">
@@ -35,7 +35,7 @@ export function CommonPointItemClient({
           <span className="hidden md:block text-[10px] font-bold tracking-[0.3em] text-zinc-700 group-hover:text-zinc-500 uppercase transition-colors">
             {item.tagline}
           </span>
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             {isOpen ? (
               <X size={20} className="text-white rotate-0 transition-transform duration-500" />
             ) : (

@@ -40,7 +40,7 @@ const ServiceGrid = () => {
       <div className="absolute top-0 right-1/4 w-px h-full bg-linear-to-b from-transparent via-white/10 to-transparent pointer-events-none" />
 
       {/* Section Header */}
-      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10 font-[var(--font-familjen-grotesk)]">
+      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10 font-(--font-familjen-grotesk)">
         <div className="mb-0">
           <span className="text-[10px] font-bold tracking-[0.4em] text-zinc-600 block mb-4 uppercase">
             03 / TOOLS

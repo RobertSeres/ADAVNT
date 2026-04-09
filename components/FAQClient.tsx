@@ -24,7 +24,7 @@ export function FAQItemClient({
       )}
       <button
         onClick={onToggle}
-        className="w-full py-8 px-4 flex items-center justify-between text-left group hover:bg-white/[0.02] transition-colors"
+        className="w-full py-8 px-4 flex items-center justify-between text-left group hover:bg-white/2 transition-colors"
       >
         <div className="flex items-center gap-6">
           <span className="text-[10px] font-bold text-zinc-800 transition-colors group-hover:text-zinc-500">
@@ -34,7 +34,7 @@ export function FAQItemClient({
             {question}
           </span>
         </div>
-        <div className="flex-shrink-0 ml-4">
+        <div className="shrink-0 ml-4">
           {isOpen ? (
             <Minus size={18} className="text-white" />
           ) : (

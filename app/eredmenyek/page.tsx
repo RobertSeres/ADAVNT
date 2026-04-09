@@ -40,7 +40,7 @@ export default function ResultsPage() {
 }
 
 const CaseStudy = ({ title, metric, desc }: any) => (
-  <div className="bg-black p-10 md:p-14 hover:bg-white/[0.02] transition-colors group">
+  <div className="bg-black p-10 md:p-14 hover:bg-white/2 transition-colors group">
     <div className="flex items-center gap-3 mb-8">
       <div className="w-1 h-1 bg-white" />
       <span className="text-[10px] font-bold tracking-widest text-zinc-500 uppercase">{title}</span>

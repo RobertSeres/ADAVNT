@@ -41,7 +41,7 @@ export default function BlogPage() {
                 <Link 
                   key={post.id} 
                   href={`/blog/${post.id}`}
-                  className="group flex flex-col border border-white/10 p-10 hover:bg-white/[0.02] transition-all"
+                  className="group flex flex-col border border-white/10 p-10 hover:bg-white/2 transition-all"
                 >
                   <div className="flex justify-between items-center mb-10">
                     <span className="text-[10px] font-bold tracking-[0.3em] text-zinc-500 uppercase">{post.category}</span>
