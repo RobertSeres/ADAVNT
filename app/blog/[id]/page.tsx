@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }: Props) {
 
               {/* Decorative background element for CTA */}
               <div className="absolute top-0 right-0 p-12 text-9xl font-black text-white/5 select-none transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-12">
-                Adv
+                advant
               </div>
             </div>
           </div>
