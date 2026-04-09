@@ -28,7 +28,7 @@ const Navbar = () => {
     { name: "Hogyan működik", href: "/hogyan-mukodik" },
     { name: "Eredmények", href: "/eredmenyek" },
     { name: "Befektetés", href: "/arak" },
-    { name: "Blog", href: "/blog" },
+    { name: "Tudásbázis", href: "/blog" },
   ];
 
   const handleLogoClick = (e: React.MouseEvent) => {
@@ -80,10 +80,10 @@ const Navbar = () => {
 
         {/* CTA Button */}
         <Link 
-          href="/apply" 
+          href="/villamhivas" 
           className="hidden md:block px-5 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-zinc-200 transition-all active:scale-95"
         >
-          beszéljünk
+          villámhívás
         </Link>
 
         {/* Mobile Menu Toggle */}
@@ -119,11 +119,11 @@ const Navbar = () => {
             </Link>
           ))}
           <Link 
-            href="/apply" 
+            href="/villamhivas" 
             onClick={() => setIsMobileMenuOpen(false)}
             className="px-12 py-6 bg-white text-black font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:bg-zinc-200 active:scale-95 shadow-2xl inline-block no-underline"
           >
-            beszéljünk
+            villámhívás
           </Link>
         </div>
       </div>

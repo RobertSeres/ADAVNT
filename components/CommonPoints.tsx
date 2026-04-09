@@ -6,7 +6,7 @@ const commonPoints = [
     id: "01",
     title: "nem ügynökség, hanem partner",
     tagline: "FELELŐSSÉG",
-    bgClass: "from-blue-900/20 via-zinc-900/5 to-black",
+    colors: ["#000000", "#1e3a8a", "#00001a"], // Deep Blue
     columns: [
       {
         label: "PROBLÉMA",
@@ -31,7 +31,7 @@ const commonPoints = [
     id: "02",
     title: "minden mérhető",
     tagline: "ADATVEZÉRELT",
-    bgClass: "from-purple-900/20 via-zinc-900/5 to-black",
+    colors: ["#000000", "#581c87", "#2e1065"], // Deep Purple
     columns: [
       {
         label: "PROBLÉMA",
@@ -56,7 +56,7 @@ const commonPoints = [
     id: "03",
     title: "saját tech, nincs sablon",
     tagline: "TECHNOLÓGIA",
-    bgClass: "from-emerald-900/20 via-zinc-900/5 to-black",
+    colors: ["#000000", "#064e3b", "#022c22"], // Deep Emerald
     columns: [
       {
         label: "PROBLÉMA",
@@ -81,7 +81,7 @@ const commonPoints = [
     id: "04",
     title: "nem projekt, hanem folyamat",
     tagline: "HAVI MODELL",
-    bgClass: "from-rose-900/20 via-zinc-900/5 to-black",
+    colors: ["#000000", "#881337", "#4c0519"], // Deep Rose
     columns: [
       {
         label: "PROBLÉMA",

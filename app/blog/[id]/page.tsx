@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: Props) {
             
             <div className="mb-12">
               <span className="text-[10px] font-bold tracking-[0.4em] text-zinc-500 block mb-6 uppercase">
-                {post.category} / {post.readingTime}
+                TUDÁSBÁZIS / {post.category} / {post.readingTime}
               </span>
               <h1 className="text-5xl md:text-8xl font-black lowercase tracking-tighter mb-8 leading-[0.85]">
                 {post.title}
@@ -86,10 +86,10 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="relative z-10">
                 <h3 className="text-3xl font-black lowercase mb-6 tracking-tighter">tetszett a cikk?</h3>
                 <p className="text-zinc-400 mb-10 max-w-md lowercase">
-                  ha a te vállalkozásodat is szeretnéd növekedési pályára állítani, jelentkezz egy ingyenes growth auditra.
+                  ha a te vállalkozásodat is szeretnéd növekedési pályára állítani, válaszd ki a számodra megfelelő csomagot.
                 </p>
-                <Link href="/apply" className="px-10 py-4 bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase transition-all hover:bg-zinc-200 inline-block no-underline">
-                  jelentkezz auditra →
+                <Link href="/arak" className="px-10 py-4 bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase transition-all hover:bg-zinc-200 inline-block no-underline">
+                  megnézem a csomagokat →
                 </Link>
               </div>
 

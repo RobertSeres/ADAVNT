@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Grainient from "./Grainient";
 
 export function CommonPointItemClient({ 
   item, 
@@ -14,13 +15,13 @@ export function CommonPointItemClient({
   onToggle: () => void;
 }) {
   return (
-    <div className={`border-b border-white/10 transition-all duration-700 relative overflow-hidden ${isOpen ? "bg-zinc-950/40" : ""}`}>
+    <div className={`border-b border-white/10 transition-all duration-700 relative overflow-hidden ${isOpen ? "bg-zinc-950/20" : ""}`}>
       {isOpen && (
-        <div className="absolute inset-0 bg-linear-to-r from-white/5 via-transparent to-transparent pointer-events-none opacity-50" />
+        <div className="absolute inset-0 bg-linear-to-r from-white/5 via-transparent to-transparent pointer-events-none opacity-30" />
       )}
       <button
         onClick={onToggle}
-        className="w-full py-10 px-4 md:px-8 flex items-center justify-between group hover:bg-white/2 transition-colors"
+        className="w-full py-10 px-4 md:px-8 flex items-center justify-between group hover:bg-white/2 transition-colors relative z-10"
       >
         <div className="flex items-center gap-8 md:gap-16">
           <span className="text-[10px] font-bold text-zinc-800 transition-colors group-hover:text-zinc-500">
@@ -54,12 +55,18 @@ export function CommonPointItemClient({
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              className={`absolute inset-0 z-0 bg-linear-to-br ${item.bgClass}`}
-            />
+            <div className="absolute inset-0 z-0">
+              <Grainient 
+                color1={item.colors[0]}
+                color2={item.colors[1]}
+                color3={item.colors[2]}
+                timeSpeed={0.1}
+                zoom={1.5}
+                noiseScale={2}
+                grainAmount={0.2}
+                className="h-full w-full opacity-40"
+              />
+            </div>
 
             <div className="px-8 md:px-16 pb-16 pt-4 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-l border-white/10 pl-8 md:pl-12">

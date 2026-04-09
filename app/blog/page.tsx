@@ -14,7 +14,7 @@ export default async function BlogPage() {
         <div className="pt-32 pb-40 container mx-auto">
           <div className="max-w-7xl mx-auto">
             <span className="text-[10px] font-bold tracking-[0.4em] text-zinc-600 block mb-6 uppercase">
-              04 / KNOWLEDGE
+              04 / TUDÁSBÁZIS
             </span>
             <h1 className="text-5xl md:text-8xl font-black lowercase tracking-tighter mb-20 leading-none">
               tudásbázis. <br/> növekedési fegyverek.

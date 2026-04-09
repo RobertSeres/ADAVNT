@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Check, ArrowRight, Zap } from 'lucide-react';
 import PricingCard from './PricingCard';
+import PricingCTAClient from './PricingCTAClient';
 
 const Pricing = () => {
   const foundationFeatures = [
@@ -180,26 +181,7 @@ const Pricing = () => {
 
         </div>
 
-        {/* Secondary CTA: Rapid Call */}
-        <div className="mt-24 max-w-4xl mx-auto border border-white/10 bg-white/[0.02] p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 group transition-all hover:bg-white/[0.04]">
-          <div className="flex-1">
-            <h4 className="text-3xl md:text-[2.5rem] font-black text-white leading-tight mb-4 lowercase tracking-tight">
-              nem vagy biztos benne? <br className="hidden md:block" /> beszéljünk.
-            </h4>
-            <p className="text-zinc-500 font-light lowercase text-lg max-w-md italic">
-              "20 perc alatt többet tanultam a saját marketingemről, mint az elmúlt fél évben egyedül." — Kovács Péter, XY Étterem
-            </p>
-          </div>
-          <div className="shrink-0">
-            <Link 
-              href="/villamhivas"
-              className="px-10 py-6 bg-white text-black text-[10px] font-black tracking-[0.3em] uppercase hover:bg-zinc-200 transition-all flex items-center gap-3 no-underline"
-            >
-              villámhívás kérése — 15 perc, ingyen <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
-
+        <PricingCTAClient />
       </div>
     </section>
   );
