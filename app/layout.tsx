@@ -11,8 +11,11 @@ const familjenGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Advant - Digital Systems",
-  description: "High-performance digital ecosystems for modern business growth.",
+  title: "Advant - Growth Partner",
+  description: "A te growth partnered. Stratégia, végrehajtás, eredmény.",
+  alternates: {
+    canonical: 'https://advant.hu',
+  },
 };
 
 export default function RootLayout({
