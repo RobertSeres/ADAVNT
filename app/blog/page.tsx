@@ -1,28 +1,12 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import Link from "next/link";
+import { getBlogPosts } from "@/lib/blog";
 
-const blogPosts = [
-  {
-    id: "etterem-online",
-    title: "hogyan szerezzen egy étterem több foglalást online",
-    date: "2024.04.09",
-    category: "stratégia",
-    excerpt: "5 konkrét lépés, amivel egy vendéglátóhely 3 hónap alatt megduplázhatja az online foglalásait."
-  },
-  {
-    id: "marketing-ugynokseg-mikor",
-    title: "mikor éri meg marketing ügynökséget fogadni",
-    date: "2024.04.05",
-    category: "üzlet",
-    excerpt: "Nézzük meg a számokat: mikor hoz többet a külsős csapat, mint amennyibe kerül?"
-  }
-];
+export default async function BlogPage() {
+  const blogPosts = await getBlogPosts();
 
-export default function BlogPage() {
   return (
     <SmoothScroll>
       <main className="min-h-screen bg-black text-white px-6">
@@ -45,10 +29,10 @@ export default function BlogPage() {
                 >
                   <div className="flex justify-between items-center mb-10">
                     <span className="text-[10px] font-bold tracking-[0.3em] text-zinc-500 uppercase">{post.category}</span>
-                    <span className="text-[10px] font-mono text-zinc-700">{post.date}</span>
+                    <span className="text-[10px] font-mono text-zinc-700">{post.readingTime}</span>
                   </div>
                   <h2 className="text-3xl font-black lowercase mb-6 group-hover:text-white transition-colors">{post.title}</h2>
-                  <p className="text-zinc-500 font-light lowercase leading-relaxed mb-10">{post.excerpt}</p>
+                  <p className="text-zinc-500 font-light lowercase leading-relaxed mb-10 line-clamp-3">{post.excerpt}</p>
                   <span className="text-[10px] font-bold tracking-widest uppercase mt-auto">elolvasom →</span>
                 </Link>
               ))}

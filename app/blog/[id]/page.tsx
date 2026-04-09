@@ -1,12 +1,19 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { getBlogPost } from "@/lib/blog";
+import { notFound } from "next/navigation";
 
-export default function BlogPostPage({ params }: { params: { id: string } }) {
+export default async function BlogPostPage({ params }: { params: { id: string } }) {
+  const { id } = params;
+  const post = await getBlogPost(id);
+
+  if (!post) {
+    notFound();
+  }
+
   return (
     <SmoothScroll>
       <main className="min-h-screen bg-black text-white px-6">
@@ -21,28 +28,26 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
             </Link>
             
             <span className="text-[10px] font-bold tracking-[0.4em] text-zinc-600 block mb-6 uppercase">
-              STRATÉGIA / 2024.04.09
+              {post.category} / {post.readingTime}
             </span>
             <h1 className="text-5xl md:text-7xl font-black lowercase tracking-tighter mb-12 leading-none">
-              hogyan szerezzen egy étterem több foglalást online
+              {post.title}
             </h1>
             
-            <div className="prose prose-invert prose-zinc max-w-none font-light text-lg text-zinc-400 leading-relaxed lowercase">
-              <p className="mb-8">
-                A brutális igazság az, hogy a legtöbb étterem kidobja a pénzt az ablakon marketing címszó alatt. Facebook posztok értelmetlen ételekről, 20 like, 0 új asztalfoglalás.
-              </p>
-              <h2 className="text-3xl font-black text-white mb-6 mt-16 lowercase">1. adatvezérelt alapok</h2>
-              <p className="mb-8">
-                Minden ott kezdődik, hogy mérjük a konverziót. Ha nem tudod pontosan, hány foglalást hozott az utolsó kampányod, akkor csak találgatsz. Be kell mérni minden kattintást a "foglalás" gombra.
-              </p>
-              <h2 className="text-3xl font-black text-white mb-6 mt-16 lowercase">2. a sebesség és a mobil élmény</h2>
-              <p className="mb-8">
-                Ha az étlapod egy 50MB-os PDF, amit mobilról nem lehet elolvasni, már vesztettél. Egy villámgyors landing page, ahol 3 kattintással tudsz foglalni, és azonnal látszanak a szabad asztalok — ez a titka minden sikeres vendéglátóhelynek 2026-ban.
-              </p>
-              <p className="mt-20 border-t border-white/10 pt-16 text-zinc-500">
-                Szeretnél több asztalfoglalást? <br/>
-                <Link href="/apply" className="text-white hover:underline transition-all">Jelentkezz auditra →</Link>
-              </p>
+            {/* Markdown Content */}
+            <div 
+              className="blog-content prose prose-invert prose-zinc max-w-none font-light text-lg text-zinc-400 leading-relaxed lowercase 
+              prose-h2:text-white prose-h2:text-3xl prose-h2:font-black prose-h2:mt-16 prose-h2:mb-6 prose-h2:lowercase
+              prose-h3:text-white prose-h3:text-2xl prose-h3:font-bold prose-h3:mt-10 prose-h3:mb-4 prose-h3:lowercase
+              prose-p:mb-8 prose-strong:text-white prose-strong:font-bold prose-a:text-white prose-a:underline"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+
+            <div className="mt-20 border-t border-white/10 pt-16 text-zinc-500">
+              <p className="mb-4">tetszett a cikk? kérj egy ingyenes auditot az üzletedre.</p>
+              <Link href="/apply" className="text-white hover:underline transition-all text-xl font-black lowercase">
+                jelentkezz auditra →
+              </Link>
             </div>
           </div>
         </div>
