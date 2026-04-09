@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /legal/
+
+# Host
+Host: https://advant.hu
+
+# Sitemaps
+Sitemap: https://advant.hu/sitemap.xml

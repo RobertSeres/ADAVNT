@@ -5,13 +5,17 @@ import type { NextRequest } from 'next/server';
 const rateLimitMap = new Map();
 
 /**
- * Middleware for Rate Limiting and Security Headers
+ * Proxy for Rate Limiting and Security Headers
+ * Note: middleware was renamed to proxy in Next.js 16
  */
-export function middleware(request: NextRequest) {
-  const ip = request.ip || 'anonymous';
+export function proxy(request: NextRequest) {
+  // Get IP from headers (NextRequest.ip was removed in v15)
+  const forwarded = request.headers.get('x-forwarded-for');
+  const ip = forwarded ? forwarded.split(',')[0] : 'anonymous';
+  
   const now = Date.now();
   const windowMs = 60 * 1000; // 1 minute
-  const maxRequests = 20;
+  const maxRequests = 30;
 
   const userRequests = rateLimitMap.get(ip) || [];
   const recentRequests = userRequests.filter((time: number) => now - time < windowMs);
@@ -27,19 +31,12 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
   
   const securityHeaders = {
-    // Content Security Policy
     'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.google-analytics.com https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src 'self'; worker-src 'blob';",
-    // Prevent DNS prefetching
     'X-DNS-Prefetch-Control': 'on',
-    // HSTS
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
-    // Clickjacking protection
     'X-Frame-Options': 'SAMEORIGIN',
-    // MIME sniffing protection
     'X-Content-Type-Options': 'nosniff',
-    // Referrer Policy
     'Referrer-Policy': 'origin-when-cross-origin',
-    // XSS filter
     'X-XSS-Protection': '1; mode=block',
   };
 
