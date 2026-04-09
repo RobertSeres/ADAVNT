@@ -222,32 +222,28 @@ export default function AIChatBot() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.5, delay: 5 }}
-              className="relative hidden md:block"
+              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.1 } }}
+              transition={{ duration: 0.3 }}
+              className="relative hidden md:flex items-center"
             >
               <div
-                className="bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase px-5 py-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] cursor-pointer hover:bg-zinc-200 transition-colors"
+                className="bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase px-6 py-4 shadow-2xl cursor-pointer hover:bg-zinc-100 transition-all active:scale-95"
                 onClick={() => setIsOpen(true)}
               >
                 kérdésed van?
               </div>
               
-              {/* Dedicated hit area for the close button to ensure it works every time */}
-              <div className="absolute -top-4 -right-4 w-10 h-10 flex items-center justify-center z-[60]">
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    setIsPopupVisible(false);
-                  }}
-                  onPointerDown={(e) => e.stopPropagation()}
-                  className="w-6 h-6 bg-black text-white border border-white/20 flex items-center justify-center hover:bg-red-600 transition-colors shadow-2xl cursor-pointer"
-                  title="Bezárás"
-                >
-                  <X size={12} strokeWidth={3} />
-                </button>
-              </div>
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setIsPopupVisible(false);
+                }}
+                className="ml-2 w-10 h-10 bg-black/40 backdrop-blur-md border border-white/10 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all active:scale-90"
+                title="Bezárás"
+              >
+                <X size={16} />
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
