@@ -2,7 +2,6 @@
 
 import React, { useEffect, useLayoutEffect, useState, Suspense } from "react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import { ArrowLeft, Check, Send } from "lucide-react";
 import Grainient from "@/components/Grainient";
@@ -233,7 +232,6 @@ export default function ApplyPage() {
         <Suspense fallback={<div className="h-screen w-full bg-black flex items-center justify-center text-white text-[10px] uppercase tracking-widest">töltés...</div>}>
            <ApplyContent />
         </Suspense>
-        <Footer />
       </main>
     </SmoothScroll>
   );
