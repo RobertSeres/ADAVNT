@@ -159,6 +159,7 @@ const botKnowledge = [
 
 export default function AIChatBot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPopupVisible, setIsPopupVisible] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
   const [inputVal, setInputVal] = useState("");
   const [messages, setMessages] = useState<Message[]>([
@@ -217,16 +218,29 @@ export default function AIChatBot() {
     <>
       <div className="fixed bottom-6 right-6 z-50 flex items-center gap-4">
         <AnimatePresence>
-          {!isOpen && (
+          {!isOpen && isPopupVisible && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.5, delay: 5 }}
-              className="bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase px-5 py-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] hidden md:block cursor-pointer hover:bg-zinc-200 transition-colors"
-              onClick={() => setIsOpen(true)}
+              className="relative group hidden md:block"
             >
-              kérdésed van?
+              <div
+                className="bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase px-5 py-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] cursor-pointer hover:bg-zinc-200 transition-colors"
+                onClick={() => setIsOpen(true)}
+              >
+                kérdésed van?
+              </div>
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsPopupVisible(false);
+                }}
+                className="absolute -top-2 -left-2 w-5 h-5 bg-black text-white border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-zinc-900"
+              >
+                <X size={10} />
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
