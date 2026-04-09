@@ -222,28 +222,28 @@ export default function AIChatBot() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.1 } }}
-              transition={{ duration: 0.3 }}
-              className="relative hidden md:flex items-center"
+              exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.15 } }}
+              transition={{ duration: 0.4 }}
+              className="hidden md:block"
             >
               <div
-                className="bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase px-6 py-4 shadow-2xl cursor-pointer hover:bg-zinc-100 transition-all active:scale-95"
+                className="bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase pl-6 pr-3 py-4 shadow-2xl cursor-pointer hover:bg-zinc-100 transition-all flex items-center gap-4"
                 onClick={() => setIsOpen(true)}
               >
-                kérdésed van?
+                <span>kérdésed van?</span>
+                <div className="w-px h-3 bg-black/10 mx-1" />
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    setIsPopupVisible(false);
+                  }}
+                  className="w-6 h-6 flex items-center justify-center hover:bg-black text-black hover:text-white transition-all"
+                  title="Bezárás"
+                >
+                  <X size={14} strokeWidth={3} />
+                </button>
               </div>
-              
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  setIsPopupVisible(false);
-                }}
-                className="ml-2 w-10 h-10 bg-black/40 backdrop-blur-md border border-white/10 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all active:scale-90"
-                title="Bezárás"
-              >
-                <X size={16} />
-              </button>
             </motion.div>
           )}
         </AnimatePresence>
