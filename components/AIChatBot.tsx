@@ -224,7 +224,7 @@ export default function AIChatBot() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.5, delay: 5 }}
-              className="relative group hidden md:block"
+              className="relative hidden md:block"
             >
               <div
                 className="bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase px-5 py-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] cursor-pointer hover:bg-zinc-200 transition-colors"
@@ -232,15 +232,22 @@ export default function AIChatBot() {
               >
                 kérdésed van?
               </div>
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsPopupVisible(false);
-                }}
-                className="absolute -top-2 -left-2 w-5 h-5 bg-black text-white border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-zinc-900"
-              >
-                <X size={10} />
-              </button>
+              
+              {/* Dedicated hit area for the close button to ensure it works every time */}
+              <div className="absolute -top-4 -right-4 w-10 h-10 flex items-center justify-center z-[60]">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    setIsPopupVisible(false);
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  className="w-6 h-6 bg-black text-white border border-white/20 flex items-center justify-center hover:bg-red-600 transition-colors shadow-2xl cursor-pointer"
+                  title="Bezárás"
+                >
+                  <X size={12} strokeWidth={3} />
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
