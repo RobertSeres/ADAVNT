@@ -10,138 +10,150 @@ type Message = {
   text: string;
 };
 
-// FULL Knowledge Base from advant-ai-tudastar.docx
+// FULL CATEGORIZED Knowledge Base from docx and user keywords
 const botKnowledge = [
-  // 1. BEVEZETÉS & DEFINÍCIÓ
+  // 1. KÖSZÖNTÉS / NYITÁS
   {
-    keywords: ["mi az advant", "ki az advant", "kik vagytok", "ügynökség", "ügynökség-e"],
-    answer: "az advant egy growth partner. nem klasszikus ügynökség és nem freelancer csapat — hanem egy hosszú távú növekedési partner, aki havi előfizetéssel felelősséget vállal az üzleti eredményeidért."
-  },
-  {
-    keywords: ["miben más", "különbség", "miért jobb", "miért válasszalak"],
-    answer: "mert nálunk nem szolgáltatót veszel, hanem egy partnert, aki beül melléd a virtuális asztalhoz. nem esztétikát árulunk, hanem kőkemény matekot és adatvezérelt skálázódást. felelősséget vállalunk a bevételedért."
+    keywords: ["szia", "hello", "helo", "helló", "hey", "hé", "hali", "szervusz", "szevasz", "jó napot", "jó estét", "jó reggelt", "üdv", "üdvözlöm", "heló", "csá", "csáó", "mi újság", "hogy vagy", "vagyok itt", "itt vagyok"],
+    answer: "szia! üdv az advant-nál. én az advant digitális asszisztense vagyok. miben segíthetek a szolgáltatásainkkal vagy a growth partner modellünkkel kapcsolatban?"
   },
   
-  // 2. SZOLGÁLTATÁSOK - NÉGY OSZLOP
+  // 2. ELKÖSZÖNÉS
   {
-    keywords: ["mit csináltok", "mivel foglalkoztok", "szolgáltatások", "mit kínáltok"],
-    answer: "négy fő oszlopon alapul a rendszerünk: 1. üzleti stratégia és audit. 2. prémium egyedi webfejlesztés (next.js). 3. tartalom- és videógyártás. 4. adatvezérelt performance marketing (meta, google, tiktok)."
-  },
-  {
-    keywords: ["audit", "átvilágítás", "elemzés"],
-    answer: "minden munkát egy growth audittal kezdünk. átnézzük a bevételt, a csatornákat és a szűk keresztmetszeteket. nem te mondod meg mit szeretnél — mi mondjuk meg, hol van a növekedési potenciál az üzletedben."
-  },
-  {
-    keywords: ["web", "honlap", "fejlesztés", "oldal", "landing", "weboldal"],
-    answer: "kizárólag egyedi, next.js alapú weboldalakat építünk. nem wordpress, nem sablon. villámgyors (99+ pagespeed), biztonságos, és 100%-ban konverzióra (cro) van optimalizálva."
-  },
-  {
-    keywords: ["tartalom", "videó", "ugc", "reels", "tiktok content"],
-    answer: "stratégia-alapú tartalomgyártást végzünk: social videók, brand content, testimonialok és fotó. nem random posztolunk — minden képkocka a vásárlás előidézését szolgálja."
-  },
-  {
-    keywords: ["hirdetés", "kampány", "ads", "ads management", "meta", "google ads", "tiktok ads"],
-    answer: "teljes performance marketinget viszünk. úgy költünk, mintha a sajátunk lenne, és minden fillér megtérülését (roi) élő dashboardokon mutatjuk meg neked."
-  },
-  
-  // 3. ÁRAZÁS & CSOMAGOK
-  {
-    keywords: ["ár", "mennyi", "költség", "fizetés", "pénz", "csomag"],
-    answer: "havi előfizetéses modellben dolgozunk, nincsenek sablon csomagok. az együttműködés 600.000 ft/hó és 1.200.000 ft/hó + sikerdíj között mozog jellemzően, a pontos ár az audit után derül ki."
-  },
-  {
-    keywords: ["growth foundation", "alap csomag"],
-    answer: "a growth foundation (600k+/hó) a működő cégek alap fegyverarzenálja: audit, next.js fejlesztés, meta/google ads, analitika, alap tartalomgyártás és transzparens dashboard."
-  },
-  {
-    keywords: ["full scale", "skálázó csomag", "vip"],
-    answer: "a full scale (1.2m+/hó + sikerdíj) agresszív dominanciára van tervezve: tömeges high-end videó, fpv drón, ai generált reklámok, egyedi app/e-commerce és b2b linkedin outreach rendszer."
-  },
-  {
-    keywords: ["hirdetési büdzsé", "hirdetésre mennyit"],
-    answer: "a hirdetési büdzsé mindig külön tétel és közvetlenül a platformon (meta, google) fizeted. ez nem része a havi partneri díjunknak."
-  },
-  {
-    keywords: ["sikerdíj", "jutalék"],
-    answer: "a full scale modellben beépítünk egy transzparens sikerdíjas profitmegosztást is, így még inkább érdekeltek vagyunk a közös sikerben."
+    keywords: ["viszlát", "viszonthallásra", "szia szia", "köszi", "köszönöm", "kösz", "ennyi", "ennyi volt", "megvagyok", "minden oké", "oké köszi", "hát ennyi", "pá", "bye", "cső", "mennem kell", "elég volt", "szép napot", "jó éjt"],
+    answer: "szívesen! örülök, ha tudtam segíteni. ha bármi kérdésed maradna, itt vagyok. legyen szép napod!"
   },
 
-  // 4. KI EZ / KI NEM EZ
+  // 3. MI AZ ADVANT / BEMUTATKOZÁS
   {
-    keywords: ["kinek valö", "kinek nem", "mikor ne", "startup", "magánszemély"],
-    answer: "működő vállalkozásoknak vagyunk a legjobbak, akik már bizonyítottak és skálázódni akarnak. nem alkalmas startupoknak bevétel nélkül, vagy olyan nagyvállalatoknak, akiknek saját nagy marketing osztályuk van."
-  },
-  {
-    keywords: ["mit nem", "dropshipping", "mlm", "scam", "olcsó"],
-    answer: "nem építünk 50 ezres sablon weboldalakat, és nem vállalunk dropshipping, mlm vagy scam projekteket. csak komoly, legitim vállalkozásokkal dolgozunk."
+    keywords: ["mi az advant", "mit csináltok", "mivel foglalkoztok", "kik vagytok", "mi ez", "miről szól", "bemutatkozás", "about", "rólatok", "magukról", "ki áll mögötte", "milyen cég", "mióta vagytok", "létezik"],
+    answer: "az advant egy fiatal, technológia-fókuszú growth partner csapat. nem klasszikus ügynökség vagyunk, hanem egy olyan stratégiai partner, aki havi előfizetéssel viszi a teljes digitális növekedésedet: fejlesztéstől a kampányokig."
   },
 
-  // 5. FOLYAMAT & SZERZŐDÉS
+  // 4. GROWTH PARTNER KONCEPCIÓ
   {
-    keywords: ["hogyan működik", "folyamat", "lépések", "hogy indulunk"],
-    answer: "három lépés: 1. growth audit (adatok átnézése). 2. rendszer felépítés (web, tartalom, hirdetés). 3. havi optimalizálás és scale. negyedévente leülünk és stratégiát korrigálunk."
-  },
-  {
-    keywords: ["szerződés", "felmondás", "minimum", "elköteleződés"],
-    answer: "3 hónapos minimum elköteleződéssel kezdünk, mert ennyi idő kell a rendszerek felépítéséhez és az első valid adatokhoz. utána havi szinten bármikor felmondható a közös munka."
-  },
-  {
-    keywords: ["mikor lesz eredmény", "idő", "meddig tart"],
-    answer: "az 1. hónap az építésé. a 2-3. hónaptól jönnek az első mérhető eredmények, a 6. hónapra pedig már egy stabil, fenntartható növekedési pálya a cél."
+    keywords: ["growth partner", "növekedési partner", "mi az a growth", "mit jelent a partner", "hogyan működik", "miben más", "miben különböztök", "nem ügynökség", "ügynökség különbség", "mi a különbség", "miért nem ügynökség", "partner modell"],
+    answer: "a growth partner modell lényege, hogy nem szolgáltatóként, hanem tulajdonosi szemlélettel dolgozunk veled. nem hirdetéseket állítunk be, hanem az egész üzleti struktúrádat optimalizáljuk, hogy a hirdetett forintok tényleges profitot hozzanak."
   },
 
-  // 6. TECHNIKAI & SPECIFIKUS
+  // 5. SZOLGÁLTATÁSOK — ÁLTALÁNOS
   {
-    keywords: ["wordpress", "wp", "miért nem wp", "sablon oldal"],
-    answer: "a wordpress jó bizonyos dolgokra, de lassú és sérülékeny lehet. mi egyedi rendszert építünk, ami 99+ pagespeed pontszámot hoz, és nincsenek felesleges pluginok, amik belassítják a vásárlást."
-  },
-  {
-    keywords: ["analitika", "analytics", "ga4", "mérés", "pixel", "capi"],
-    answer: "google analytics 4, gtm, hotjar és meta conversions api (capi) alap nálunk. mindent mérünk szerveroldalon is, és te is valós időben látod a számokat egy dashboardon."
-  },
-  {
-    keywords: ["hirdetési fiók", "fiók hozzáférés", "kié a fiók"],
-    answer: "a hirdetési fiók 100%-ban a te tulajdonod marad, mi csak szerkesztői hozzáféréssel kezeljük. teljes átláthatóság, bármikor ellenőrizheted a költéseket."
-  },
-  {
-    keywords: ["in-house", "saját programozó", "saját fejlesztő"],
-    answer: "szívesen dolgozunk együtt a saját csapatoddal is, de a tapasztalatunk az, hogy a legjobb eredményt akkor érjük el, ha a teljes konverziós gépezetet mi felügyeljük."
-  },
-  {
-    keywords: ["külföld", "nemzetközi", "angol", "export"],
-    answer: "igen, külpiaci skálázásban is profik vagyunk (dach, uk, usa). nyelvi lokalizáció, külföldi hirdetéskezelés és seo terén is tudunk segíteni."
+    keywords: ["szolgáltatás", "mit kínáltok", "mit adtok", "mit kapok", "mi van benne", "csomag", "tartalmaz", "beletartozik", "része", "eszköz", "eszköztár", "mit tudtok"],
+    answer: "négy fő területen dolgozunk: 1. üzleti stratégia és audit, 2. egyedi next.js webfejlesztés, 3. stratégiai tartalomgyártás (videó/fotó), 4. performance marketing (ads) és analitika. mindez egy kézben, egymást segítve."
   },
 
-  // 7. KAPCSOLAT & KOMMUNIKÁCIÓ
+  // 6. STRATÉGIA
   {
-    keywords: ["hol vagytok", "iroda", "cím", "lokáció"],
-    answer: "az advant bázisa budapesten, a 1062 andrássy út területén található."
-  },
-  {
-    keywords: ["slack", "kommunikáció", "hogy beszélünk", "elérhetőség"],
-    answer: "dedikált slack csatornát vagy vip whatsapp csoportot kap minden partnerünk. nálunk nincs emailezgetős várólista, azonnal reagálunk a kérdésekre."
-  },
-  {
-    keywords: ["telefon", "szám", "visszahívás"],
-    answer: "hívj minket bátran a +36 70 885 6534-es számon, vagy töltsd ki az űrlapot és 24 órán belül mi keresünk!"
-  },
-  {
-    keywords: ["email", "levél", "mail"],
-    answer: "írj nekünk a hello@advant.hu-ra, és a csapat legkésőbb másnap válaszol."
-  },
-  {
-    keywords: ["hogyan indulunk", "jelentkezés", "szeretném kipróbálni", "következő lépés"],
-    answer: "a leggyorsabb, ha kitöltöd a jelentkezési űrlapot az oldalon. így látjuk az alapvető infókat a cégedről, és a 15 perces discovery hívásunk már rögtön lényegre törő lesz."
+    keywords: ["stratégia", "audit", "growth audit", "üzleti audit", "üzleti terv", "tervezés", "KPI", "célok", "mérőszámok", "review", "negyedéves", "elemzés", "átvilágítás", "felmérés"],
+    answer: "minden együttműködést egy growth audittal kezdünk. átnézzük a számaidat, keressük a szűk keresztmetszeteket, és felállítjuk a KPI-okat. negyedévente pedig nagy review-t tartunk, hogy lássuk, jó irányba tartunk-e."
   },
 
-  // 8. SZEMÉLYES & AI
+  // 7. WEBFEJLESZTÉS
   {
-    keywords: ["ki vagy", "robot", "chatbot", "ai"],
-    answer: "az advant digitális asszisztense vagyok. az a feladatom, hogy segítsek megérteni, hogyan dolgozunk. ha valós emberrel beszélnél, hívj minket telefonon!"
+    keywords: ["weboldal", "website", "webfejlesztés", "landing page", "honlap", "oldal készítés", "webdesign", "fejlesztés", "next.js", "react", "wordpress", "sablon", "template", "sebesség", "pagespeed", "UX", "konverzió", "CRO", "A/B teszt", "optimalizálás"],
+    answer: "kizárólag egyedi next.js weboldalakat építünk kódolással, nem wordpress sablonokat. ez garantálja a 99+ pagespeed pontszámot, a maximális biztonságot és a tűpontos konverziós (cro) méréseket."
   },
+
+  // 8. TARTALOM / VIDEÓ
   {
-    keywords: ["szia", "hello", "üdv", "hé", "szió"],
-    answer: "szia! üdv az advant-nál. kistérségi magázódás nincs nálunk, szóval kérdezz bátran bármit a growth partner modellünkről!"
+    keywords: ["videó", "videók", "tartalom", "content", "social media", "social", "poszt", "posztolás", "instagram", "facebook", "tiktok", "linkedin", "reels", "shorts", "brand videó", "testimonial", "fotó", "reklámfilm", "kreatív", "vizuál"],
+    answer: "nem 'szép' képeket gyártunk, hanem pszichológiai elemekre épülő, eladást segítő videókat (tiktok/reels), ugc-t és brand contentet. a cél, hogy a tartalom ne csak dekoráció, hanem konverziós gép legyen."
+  },
+
+  // 9. HIRDETÉSEK / KAMPÁNY
+  {
+    keywords: ["hirdetés", "kampány", "reklám", "google ads", "meta ads", "facebook hirdetés", "instagram hirdetés", "tiktok ads", "PPC", "retargeting", "remarketing", "célzás", "büdzsé", "költés", "kattintás", "megjelenés"],
+    answer: "teljes performancet viszünk: google kereső és display, meta (fb/ig), tiktok és linkedin. minden fillér költést mérünk, és transzparensen látsz mindent a dashboardodon. a hirdetési keretet te fizeted a platformnak, mi kezeljük azt."
+  },
+
+  // 10. ANALITIKA / MÉRÉS
+  {
+    keywords: ["analitika", "analytics", "GA4", "google analytics", "mérés", "dashboard", "riport", "jelentés", "konverzió", "konverziókövetés", "tracking", "adat", "adatvezérelt", "hotjar", "heatmap", "eredmény", "szám", "ROI", "megtérülés"],
+    answer: "adatvezéreltek vagyunk: ga4, meta conversions api (capi), google tag manager és hotjar/clarity hőtérképek segítik a döntéseinket. mindent mérünk, ami profitot hoz, és egy élő dashboardon te is látod az eredményeket."
+  },
+
+  // 11. ÁRAZÁS
+  {
+    keywords: ["ár", "árak", "árazás", "mennyibe kerül", "mennyi", "költség", "drága", "olcsó", "befektetés", "havi díj", "előfizetés", "retainer", "foundation", "full scale", "600", "1200", "csomag ár", "fizetés", "számla", "számlázás", "pénz"],
+    answer: "havi előfizetéses (retainer) modellben dolgozunk. a growth foundation csomagunk 600.000 ft/hó-tól, a full scale pedig 1.200.000 ft/hó-tól indul. a pontos ár az audit után derül ki a feladatok komplexitása alapján."
+  },
+
+  // 12. SIKERDÍJ
+  {
+    keywords: ["sikerdíj", "profit", "profitmegosztás", "jutalék", "bónusz", "teljesítmény alapú", "success fee"],
+    answer: "a full scale modellünkben nyitottak vagyunk profit-alapú sikerdíjas kiegészítésre is. hiszünk abban, hogy ha neked nagyot szakítunk, mi is jobban járunk — így teljes az összhang a céljaink között."
+  },
+
+  // 13. SZERZŐDÉS / GARANCIA
+  {
+    keywords: ["szerződés", "kötelezettség", "elköteleződés", "minimum", "meddig", "hány hónap", "felmondás", "kilépés", "lemondás", "feltétel", "garancia", "kockázat", "mi van ha nem", "mi van ha nem működik", "nem tetszik"],
+    answer: "3 hónapos elköteleződéssel kezdünk (audit + rendszer felépítés ideje), utána havi szintre váltunk és bármikor felmondható. ha nem hozzuk a számokat, stratégiát váltunk — nálunk nincs 'lock-in', csak eredményalapú munka."
+  },
+
+  // 14. IDŐKERET
+  {
+    keywords: ["idő", "mennyi idő", "mikor", "mikorra", "meddig tart", "mennyi idő kell", "eredmény mikor", "első hónap", "első hét", "timeline", "határidő", "gyors", "lassú", "türelem"],
+    answer: "az első hónap az audit és az alapok építése. a 2-3. hónaptól jönnek az első mérhető, stabil eredmények. a teljes modell általában a 6. hónapra érik be teljesen, amikor már golyóálló a rendszer."
+  },
+
+  // 15. HOGYAN KEZDJÜNK
+  {
+    keywords: ["hogyan kezdjünk", "hogyan induljunk", "első lépés", "jelentkezés", "űrlap", "hol kezdjem", "mi a folyamat", "regisztráció", "belépés", "csatlakozás", "érdeklődés", "érdekel", "kipróbálnám", "meg akarom nézni", "próba", "ingyenes"],
+    answer: "szuper, hogy belevágnál! töltsd ki a jelentkezési űrlapot az oldalon — ez 2 perc. utána felhívunk egy 15 perces discovery hívásra, és ha van közös pont, megcsináljuk neked az ingyenes auditot."
+  },
+
+  // 16. KOMMUNIKÁCIÓ
+  {
+    keywords: ["kommunikáció", "kapcsolat", "elérhetőség", "telefon", "telefonszám", "email", "slack", "meeting", "hívás", "beszéljünk", "felveszem a kapcsolatot", "írjak", "hívjalak", "hol találom"],
+    answer: "slacken élünk a csapattal (vagy dedikált hívásokon), nálunk nincs emailezgetős várólista. hívj bátran a +36 70 885 6534 számon, írj a hello@advant.hu-ra, vagy töltsd ki az űrlapot!"
+  },
+
+  // 17. CÉLCSOPORT / NEKEM VALÓ
+  {
+    keywords: ["nekem való", "jó nekem", "passzol", "működő vállalkozás", "KKV", "startup", "nagyvállalat", "kisvállalkozás", "iparág", "étterem", "vendéglátó", "webshop", "e-commerce", "szolgáltató", "ingatlan", "B2B", "milyen cégeknek"],
+    answer: "vendéglátásban, e-commercben és b2b piacon vagyunk otthon. ha van egy működő üzleted, amit skáláznál és kifizeted a minimum 600k havi díjat, akkor mi vagyunk a te embereid."
+  },
+
+  // 18. TECHNOLÓGIA
+  {
+    keywords: ["technológia", "tech", "milyen technológiát", "milyen rendszert", "CMS", "platform", "next", "react", "programozás", "kód", "szerver", "hosting", "tárhely", "biztonság", "sebesség"],
+    answer: "next.js, react és tailwind esszencia — ez a mai modern web csúcsa. nincs cms korlát, nincs sablon lassúság. szerveroldali mérésekkel és dedikált felhő hostinggal dolgozunk a sebességért."
+  },
+
+  // 19. REFERENCIA / EREDMÉNY
+  {
+    keywords: ["referencia", "eredmény", "eredmények", "ügyfél", "portfólió", "példa", "esettanulmány", "case study", "bizonyíték", "mutass valamit", "kinek dolgoztatok"],
+    answer: "nda (titoktartás) miatt nem rakunk ki mindent a netre, de egy privát hívásban szívesen mutatok esettanulmányokat és roas eredményeket a saját iparágadhoz kapcsolódóan."
+  },
+
+  // 20. MUNKA / CSATLAKOZÁS
+  {
+    keywords: ["állás", "munka", "dolgozhatok", "csatlakozás", "csapat", "csatlakoznék", "karrier", "pozíció", "felvétel", "jelentkezés nálatok", "alkalmazás"],
+    answer: "mindig keressük a tehetségeket! írj a hello@advant.hu-ra a portfóliódal és pár mondattal magadról. ha van nyitott pozíció és passzolsz, keresni fogunk!"
+  },
+
+  // 21. PARTNERI EGYÜTTMŰKÖDÉS
+  {
+    keywords: ["partner", "együttműködés", "kooperáció", "affiliate", "közös", "B2B partner", "ajánlás", "jutalék"],
+    answer: "nyitottak vagyunk partneri együttműködésekre és ajánló rendszerekre is. írj nekünk a hello@advant.hu-ra a részletekkel, és beszéljük át a lehetőségeket!"
+  },
+
+  // 22. CHATBOT KÉRDÉSEK
+  {
+    keywords: ["robot", "bot", "AI", "mesterséges intelligencia", "ember", "valódi", "élő", "gép", "automatikus", "emberi"],
+    answer: "robot vagyok (ai asszisztens), de az advant csapata tanított be. ha élő emberrel beszélnél, hívd a +36 70 885 6534-et vagy írj nekünk!"
+  },
+
+  // 23. ANGOL / MÁS NYELV
+  {
+    keywords: ["english", "speak english", "deutsch", "german", "sprache", "language", "nyelv"],
+    answer: "hey! we primarily work in hungarian, but feel free to write in english — we can help. what's your question about advant?"
+  },
+
+  // 24. TILTOTT TÉMÁK
+  {
+    keywords: ["politika", "párt", "szavazás", "választás", "kormány", "háború", "orosz", "ukrán", "konfliktus", "vallás", "isten", "egyház", "hit", "bevándorlás", "migráns", "woke", "LMBTQ", "gender", "abort", "halál", "meghalt", "öl"],
+    answer: "ezzel a témával sajnos nem tudok segíteni — én az advant üzleti növekedési modelljéhez értek. ha üzlettel kapcsolatban van kérdésed, kérdezz bátran!"
   }
 ];
 
@@ -150,12 +162,11 @@ export default function AIChatBot() {
   const [isTyping, setIsTyping] = useState(false);
   const [inputVal, setInputVal] = useState("");
   const [messages, setMessages] = useState<Message[]>([
-    { id: "1", role: "bot", text: "üdv! én az advant digitális asszisztense vagyok. miben segíthetek a szolgáltatásainkkal kapcsolatban?" }
+    { id: "1", role: "bot", text: "üdv! én az advant digitális asszisztense vagyok. miben segíthetek a szolgáltatásainkkal vagy a growth partner modellünkkel kapcsolatban?" }
   ]);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
@@ -163,34 +174,37 @@ export default function AIChatBot() {
   const getBotResponse = (userText: string) => {
     const textInfo = userText.toLowerCase();
     
-    // Exact multiple word or phrase matching first
-    for (const item of botKnowledge) {
-      if (item.keywords.some(kw => textInfo.includes(kw))) {
+    // Sort knowledge by keyword length (descending) to match longer/more specific phrases first
+    const sortedKnowledge = [...botKnowledge].sort((a, b) => {
+      const aMaxLen = Math.max(...a.keywords.map(k => k.length));
+      const bMaxLen = Math.max(...b.keywords.map(k => k.length));
+      return bMaxLen - aMaxLen;
+    });
+
+    for (const item of sortedKnowledge) {
+      if (item.keywords.some(kw => textInfo.includes(kw.toLowerCase()))) {
         return item.answer;
       }
     }
     
-    // Default fallback
-    return "erre a kérdésre jelenleg nem tudok pontos választ adni. írj nekünk a hello@advant.hu-ra, hívj a +36 70 885 6534-en, vagy töltsd ki a jelentkezési űrlapot!";
+    return "erre a kérdésre jelenleg nem tudok pontos választ adni. írj nekünk a hello@advant.hu-ra, hívj a +36 70 885 6534-en, vagy töltsd ki a jelentkezési űrlapot az oldalon!";
   };
 
   const handleSend = () => {
     if (!inputVal.trim()) return;
 
-    // Add user message
     const newUserMsg: Message = { id: Date.now().toString(), role: "user", text: inputVal };
     setMessages(prev => [...prev, newUserMsg]);
     setInputVal("");
     setIsTyping(true);
 
-    // Simulate thinking delay - slightly faster for better UX
     setTimeout(() => {
       const responseText = getBotResponse(newUserMsg.text);
       const newBotMsg: Message = { id: (Date.now() + 1).toString(), role: "bot", text: responseText };
       
       setMessages(prev => [...prev, newBotMsg]);
       setIsTyping(false);
-    }, 1000 + Math.random() * 500); 
+    }, 800 + Math.random() * 600); 
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -201,17 +215,14 @@ export default function AIChatBot() {
 
   return (
     <>
-      {/* Floating Action Button */}
       <div className="fixed bottom-6 right-6 z-50 flex items-center gap-4">
-        
-        {/* Pop-up bubble */}
         <AnimatePresence>
           {!isOpen && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.5, delay: 5.5 }}
+              transition={{ duration: 0.5, delay: 5 }}
               className="bg-white text-black text-[10px] font-black tracking-[0.2em] uppercase px-5 py-3 shadow-[0_0_20px_rgba(255,255,255,0.1)] hidden md:block cursor-pointer hover:bg-zinc-200 transition-colors"
               onClick={() => setIsOpen(true)}
             >
@@ -230,7 +241,6 @@ export default function AIChatBot() {
         </button>
       </div>
 
-      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -240,13 +250,12 @@ export default function AIChatBot() {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="fixed bottom-6 right-6 md:right-10 w-[90vw] md:w-[420px] h-[550px] max-h-[85vh] z-50 bg-black/95 backdrop-blur-3xl border border-white/20 shadow-2xl flex flex-col overflow-hidden"
           >
-            {/* Header */}
             <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/2">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-white animate-pulse shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
                 <div className="leading-tight">
                   <h3 className="text-white text-xs font-bold tracking-[0.2em] uppercase">advant ai</h3>
-                  <p className="text-zinc-500 text-[10px] tracking-widest lowercase">válaszidő: azonnal</p>
+                  <p className="text-zinc-500 text-[10px] tracking-widest lowercase">online</p>
                 </div>
               </div>
               <button 
@@ -257,7 +266,6 @@ export default function AIChatBot() {
               </button>
             </div>
 
-            {/* Chat Messages */}
             <div className="flex-1 overflow-y-auto p-5 scrollbar-hide flex flex-col gap-6 relative">
               {messages.map((msg) => (
                 <div 
@@ -290,7 +298,6 @@ export default function AIChatBot() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Area */}
             <div className="p-4 border-t border-white/10 bg-black relative">
               <div className="flex items-center border border-white/20 focus-within:border-white transition-colors bg-black/50">
                 <input
@@ -310,11 +317,7 @@ export default function AIChatBot() {
                   <Send size={16} />
                 </button>
               </div>
-              <div className="mt-2 text-[8px] text-zinc-600 text-center uppercase tracking-widest pointer-events-none">
-                advant growth partner divízió
-              </div>
             </div>
-            
           </motion.div>
         )}
       </AnimatePresence>
