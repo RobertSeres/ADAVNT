@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ChevronDown, Bot, Shield, Bug, Cpu } from 'lucide-react';
 
 const Manifesto = () => {
   const [isTeamOpen, setIsTeamOpen] = useState(false);
+  const [isAgentsOpen, setIsAgentsOpen] = useState(false);
 
   return (
     <section className="bg-zinc-950 py-32 border-b border-white/10 relative z-10 overflow-hidden min-h-[600px] flex items-center">
@@ -72,6 +73,7 @@ const Manifesto = () => {
                 </button>
               </div>
 
+              {/* Human Team */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
                 {[
                   {
@@ -96,7 +98,7 @@ const Manifesto = () => {
                    >
                     <div className="aspect-4/5 bg-zinc-900 border border-white/5 flex items-center justify-center relative overflow-hidden group">
                       <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-800 italic">hamarosan...</span>
-                      <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity underline-offset-4" />
+                      <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-white mb-2">{member.name}</h4>
@@ -105,6 +107,78 @@ const Manifesto = () => {
                   </motion.div>
                 ))}
               </div>
+
+              {/* Agents Expandable Section */}
+              <div className="mt-16 border border-white/10">
+                <button
+                  onClick={() => setIsAgentsOpen(!isAgentsOpen)}
+                  className="w-full flex items-center justify-between p-8 md:p-10 text-left cursor-pointer hover:bg-white/[0.02] transition-colors"
+                >
+                  <div className="flex items-center gap-5">
+                    <Cpu size={20} className="text-emerald-500" />
+                    <div>
+                      <span className="text-[10px] font-bold tracking-[0.4em] text-emerald-500/70 uppercase block mb-1">AGENTS</span>
+                      <span className="text-lg md:text-xl font-black text-white lowercase tracking-tight">többiek — AI infrastruktúra</span>
+                    </div>
+                  </div>
+                  <div 
+                    className="w-10 h-10 border border-white/10 flex items-center justify-center shrink-0 transition-transform duration-500"
+                    style={{ transform: isAgentsOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  >
+                    <ChevronDown size={16} className="text-zinc-500" />
+                  </div>
+                </button>
+
+                <div 
+                  className="overflow-hidden transition-all duration-500 ease-out"
+                  style={{ maxHeight: isAgentsOpen ? '800px' : '0px', opacity: isAgentsOpen ? 1 : 0 }}
+                >
+                  <div className="px-8 md:px-10 pb-10 border-t border-white/10">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
+                      {[
+                        {
+                          name: "JARVIS",
+                          role: "információ gyűjtés, adat bank",
+                          icon: Bot,
+                          color: "#3b82f6",
+                        },
+                        {
+                          name: "MAD MAX",
+                          role: "debug, tesztelés",
+                          icon: Bug,
+                          color: "#ef4444",
+                        },
+                        {
+                          name: "HAWK",
+                          role: "biztonsági folyamatok, tesztelés",
+                          icon: Shield,
+                          color: "#a855f7",
+                        }
+                      ].map((agent, idx) => (
+                        <motion.div 
+                          key={idx}
+                          initial={isAgentsOpen ? { opacity: 0, y: 10 } : false}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.1 * idx }}
+                          className="flex flex-col gap-5 group"
+                        >
+                          <div 
+                            className="aspect-square max-w-[180px] bg-zinc-900/80 border border-white/5 flex items-center justify-center relative overflow-hidden"
+                          >
+                            <agent.icon size={48} strokeWidth={1} className="transition-colors duration-500" style={{ color: `${agent.color}60` }} />
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `radial-gradient(circle at center, ${agent.color}10, transparent 70%)` }} />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-black text-white mb-1 tracking-tight">{agent.name}</h4>
+                            <p className="text-xs font-light text-zinc-500 lowercase leading-relaxed">{agent.role}</p>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </motion.div>
           )}
         </AnimatePresence>
