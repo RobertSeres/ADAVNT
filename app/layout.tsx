@@ -12,7 +12,7 @@ const familjenGrotesk = localFont({
 
 export const metadata: Metadata = {
   title: "Advant - Growth Partner",
-  description: "A te growth partnered. Stratégia, végrehajtás, eredmény. Adatvezérelt növekedés modern eszközökkel.",
+  description: "Advant - A modern Growth Partner. Stratégia, egyedi Next.js webfejlesztés, tartalomgyártás és adatvezérelt online marketing egy kézben.",
   alternates: {
     canonical: "https://advant.hu",
   },
@@ -63,7 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="hu"
       className={`${familjenGrotesk.variable} antialiased`}
     >
       <body className="font-sans bg-black text-white">
