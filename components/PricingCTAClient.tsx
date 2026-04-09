@@ -12,7 +12,7 @@ const PricingCTAClient = () => {
     <div 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="mt-24 max-w-4xl mx-auto border border-white/10 bg-white/[0.02] p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 group transition-all relative overflow-hidden"
+      className="mt-24 max-w-4xl mx-auto border border-white/10 bg-white/2 p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 group transition-all relative overflow-hidden"
     >
       <div className={`absolute inset-0 z-0 transition-opacity duration-700 ${isHovered ? 'opacity-40' : 'opacity-0'}`}>
         <Grainient 
