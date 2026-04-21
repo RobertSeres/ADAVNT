@@ -4,6 +4,7 @@ import React from 'react';
 import ColorBends from './ColorBends/ColorBends';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Magnetic from './Magnetic';
 
 export function HeroClient({ 
   title, 
@@ -56,23 +57,46 @@ export function HeroClient({
         style={{ x: moveX, y: moveY }}
         className="relative z-10 w-full h-full container mx-auto px-6 flex flex-col justify-start pt-[350px] md:pt-[450px] items-start text-left pointer-events-none"
       >
-        <h1 className="text-[8vw] md:text-[6.5vw] font-black tracking-tighter leading-[0.85] mb-8 mix-blend-screen animate-fade-in-up drop-shadow-2xl lowercase">
-          {title}
-        </h1>
-        <h2
-          className="text-lg md:text-2xl font-light text-zinc-400 max-w-xl mb-12 animate-fade-in-up lowercase leading-tight"
-          style={{ animationDelay: '300ms' }}
-        >
-          {subtitle}
-        </h2>
-
-        <div className="animate-fade-in-up pointer-events-auto" style={{ animationDelay: '600ms' }}>
-          <Link
-            href={ctaHref}
-            className="px-12 py-6 bg-white text-black font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:bg-zinc-200 active:scale-95 shadow-2xl inline-block no-underline"
+        <div className="overflow-hidden">
+          <motion.h1 
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[12vw] md:text-[8vw] font-black tracking-tighter leading-[0.8] mb-8 mix-blend-screen drop-shadow-2xl lowercase"
           >
-            {ctaText}
-          </Link>
+            {title}
+          </motion.h1>
+        </div>
+
+        <div className="overflow-hidden">
+          <motion.h2
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="text-lg md:text-2xl font-light text-zinc-400 max-w-xl mb-12 lowercase leading-tight"
+          >
+            {subtitle}
+          </motion.h2>
+        </div>
+
+        <div className="pointer-events-auto">
+          <Magnetic strength={0.2}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+            >
+              <Link
+                href={ctaHref}
+                className="group relative px-12 py-6 bg-white text-black font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:bg-black hover:text-white shadow-2xl inline-block no-underline overflow-hidden"
+              >
+                <span className="relative z-10">{ctaText}</span>
+                <motion.div 
+                  className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-300" 
+                />
+              </Link>
+            </motion.div>
+          </Magnetic>
         </div>
       </motion.div>
     </div>

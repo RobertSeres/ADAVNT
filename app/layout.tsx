@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
+
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
 import AIChatBot from "@/components/AIChatBot";
@@ -56,6 +58,10 @@ const jsonLd = {
   }
 };
 
+import CustomCursor from "@/components/CustomCursor";
+import Noise from "@/components/Noise";
+import PageProgress from "@/components/PageProgress";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -66,11 +72,28 @@ export default function RootLayout({
       lang="hu"
       className={`${familjenGrotesk.variable} antialiased`}
     >
-      <body className="font-sans bg-black text-white">
+      <body className="font-sans bg-black text-white selection:bg-white selection:text-black">
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-LVJH60ZTRN"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-LVJH60ZTRN');
+          `}
+        </Script>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <CustomCursor />
+        <Noise />
+        <PageProgress />
         {children}
         <CookieConsent />
         <AIChatBot />
