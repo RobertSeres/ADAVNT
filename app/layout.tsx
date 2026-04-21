@@ -58,9 +58,8 @@ const jsonLd = {
   }
 };
 
-import CustomCursor from "@/components/CustomCursor";
 import Noise from "@/components/Noise";
-import PageProgress from "@/components/PageProgress";
+
 
 export default function RootLayout({
   children,
@@ -91,9 +90,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <CustomCursor />
         <Noise />
-        <PageProgress />
+
         {children}
         <CookieConsent />
         <AIChatBot />
